@@ -1,0 +1,13 @@
+.env
+.env.*
+*.local
+docs/articles/private/
+content/private/
+secrets/
+.DS_Store
+node_modules/
+dist/
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*

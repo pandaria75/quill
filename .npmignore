@@ -1,0 +1,11 @@
+.env
+.env.*
+*.local
+docs/articles/private/
+content/private/
+secrets/
+docs/develop/
+docs/examples/
+examples/
+src/
+tsconfig.json
