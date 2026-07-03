@@ -16,7 +16,8 @@
     "build": "tsc",
     "dev": "tsx src/cli.ts",
     "check": "tsc --noEmit",
-    "smoke:init": "node scripts/smoke-init.mjs"
+    "smoke:init": "node scripts/smoke-init.mjs",
+    "smoke:article-status": "node scripts/smoke-article-status.mjs"
   },
   "dependencies": {
     "commander": "^12.1.0"

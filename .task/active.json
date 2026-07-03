@@ -1,10 +1,10 @@
 {
-  "taskId": "2026-07-03/land-issues-6-7-cli-init",
+  "taskId": "2026-07-03/land-issues-8-10-article-status",
   "type": "feature",
   "phase": "finalization",
   "allowedToCode": true,
-  "currentSlice": "slice-1-add-init-smoke",
-  "lastGate": "finalization",
-  "nextCommand": "commit, push, comment, and close GitHub issues #6 and #7",
+  "currentSlice": "slice-2-docs-status-semantics",
+  "lastGate": "slice-2-docs-status-semantics",
+  "nextCommand": "final approval, then commit/push/comment/close issues #8-#10 if requested",
   "updatedAt": "2026-07-03T00:00:00Z"
 }

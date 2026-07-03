@@ -39,7 +39,9 @@ Every stage leaves a Markdown artifact that can be edited by a person. Quill sho
 - `quill --help` shows the CLI surface.
 - `quill init` creates a local `.quill` workspace without overwriting existing files.
 - `quill new <topic>` creates a local article workspace with Markdown artifacts.
-- `quill status <article-slug>` reports whether each artifact exists, is empty, or has content.
+- `quill status <article-slug>` reports file/content detection status for each artifact: `missing`, `empty`, `pending`, or `exists`.
+
+These runtime detection labels are separate from any future lifecycle/frontmatter labels such as `created`, `generated`, `edited`, `reviewed`, or `final`. The current MVP CLI reports the detection labels above; it does not enforce lifecycle statuses.
 
 ## Planned MVP Commands
 

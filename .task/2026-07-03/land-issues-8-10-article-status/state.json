@@ -1,0 +1,55 @@
+{
+  "taskId": "2026-07-03/land-issues-8-10-article-status",
+  "type": "feature",
+  "phase": "finalization",
+  "status": "completed",
+  "allowedToCode": true,
+  "currentSlice": "slice-2-docs-status-semantics",
+  "tier": "M",
+  "gatePolicy": {
+    "recommended": "balanced",
+    "selected": "balanced",
+    "reason": "Bounded Tier M feature landing task; core behavior exists, remaining work is validation and docs alignment.",
+    "finalApprovalRequired": true
+  },
+  "slices": [
+    {
+      "id": "slice-1-add-smoke-coverage",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": [
+        "cli-behavior-validation",
+        "package-script-touch-if-used",
+        "bounded-smoke"
+      ]
+    },
+    {
+      "id": "slice-2-docs-status-semantics",
+      "status": "completed",
+      "gateClass": "simple",
+      "risk_score": 1,
+      "gateReasons": [
+        "docs-only",
+        "selected-option-C",
+        "minimal-alignment"
+      ]
+    }
+  ],
+  "gates": {
+    "requirementFrozen": true,
+    "planApproved": true,
+    "contextPackReady": true,
+    "criticPassed": false,
+    "implementationDone": true,
+    "reviewPassed": true,
+    "validationPassed": true
+  },
+  "blocker": null,
+  "files": {
+    "requirement": ".task/2026-07-03/land-issues-8-10-article-status/requirement.md",
+    "implementationPlan": ".task/2026-07-03/land-issues-8-10-article-status/implementation-plan.md",
+    "contextPack": ".task/2026-07-03/land-issues-8-10-article-status/context-pack.md"
+  },
+  "updatedAt": "2026-07-03T00:00:00Z"
+}

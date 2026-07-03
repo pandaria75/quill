@@ -40,7 +40,12 @@ updated_at: "2026-xx-xxTxx:xx:xx"
 
 ## Status Values
 
-Suggested status values:
+Quill currently uses two different status concepts:
+
+- runtime file/content detection status, as reported by `quill status`: `missing`, `empty`, `pending`, `exists`
+- future lifecycle/frontmatter status, which may be stored in artifact metadata later
+
+Suggested lifecycle/frontmatter status values:
 
 - `created`
 - `generated`
@@ -48,7 +53,7 @@ Suggested status values:
 - `reviewed`
 - `final`
 
-The MVP may not enforce all statuses, but the file format should leave room for them.
+The current MVP does not enforce these lifecycle/frontmatter values. They are reserved semantics for artifact metadata, while `quill status` only reports the runtime detection labels above. The file format should leave room for future lifecycle status if needed.
 
 ## Artifact Rules
 
