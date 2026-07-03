@@ -15,7 +15,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/cli.ts",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "smoke:init": "node scripts/smoke-init.mjs"
   },
   "dependencies": {
     "commander": "^12.1.0"

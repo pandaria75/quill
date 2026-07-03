@@ -1,0 +1,45 @@
+{
+  "taskId": "2026-07-03/land-issues-6-7-cli-init",
+  "type": "feature",
+  "phase": "finalization",
+  "status": "completed",
+  "allowedToCode": true,
+  "currentSlice": "slice-1-add-init-smoke",
+  "gatePolicy": {
+    "recommended": "balanced",
+    "selected": "balanced",
+    "reason": "Bounded Tier M feature-completion task for CLI init and smoke coverage; repository default used because no task override was requested.",
+    "finalApprovalRequired": true
+  },
+  "slices": [
+    {
+      "id": "slice-1-add-init-smoke",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": ["package-script-change", "cli-smoke-coverage", "mvp-acceptance-path"]
+    },
+    {
+      "id": "slice-2-supplement-init-gaps-if-needed",
+      "status": "cancelled",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": ["public-cli-behavior", "file-generation", "idempotency"]
+    }
+  ],
+  "gates": {
+    "requirementFrozen": true,
+    "planApproved": true,
+    "contextPackReady": true,
+    "criticPassed": false,
+    "implementationDone": true,
+    "reviewPassed": true,
+    "validationPassed": true
+  },
+  "files": {
+    "requirement": ".task/2026-07-03/land-issues-6-7-cli-init/requirement.md",
+    "implementationPlan": ".task/2026-07-03/land-issues-6-7-cli-init/implementation-plan.md",
+    "contextPack": ".task/2026-07-03/land-issues-6-7-cli-init/context-pack.md"
+  },
+  "updatedAt": "2026-07-03T00:00:00Z"
+}

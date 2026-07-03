@@ -1,0 +1,10 @@
+{
+  "taskId": "2026-07-03/land-issues-6-7-cli-init",
+  "type": "feature",
+  "phase": "finalization",
+  "allowedToCode": true,
+  "currentSlice": "slice-1-add-init-smoke",
+  "lastGate": "finalization",
+  "nextCommand": "commit, push, comment, and close GitHub issues #6 and #7",
+  "updatedAt": "2026-07-03T00:00:00Z"
+}
