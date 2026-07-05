@@ -55,6 +55,56 @@ Suggested lifecycle/frontmatter status values:
 
 The current MVP does not enforce these lifecycle/frontmatter values. They are reserved semantics for artifact metadata, while `quill status` only reports the runtime detection labels above. The file format should leave room for future lifecycle status if needed.
 
+## Checkpoint Result Format
+
+Quill also reserves a separate lightweight checkpoint result format for future quality-gate outcomes. This format is documentation and source-type only in the MVP. It does not change runtime workflow execution, artifact persistence, or CLI output.
+
+Purpose:
+
+- record a small human-readable result for a named checkpoint
+- keep checkpoint verdicts separate from artifact detection status and lifecycle/frontmatter status
+- leave room for future embedding in docs or metadata without deciding persistence yet
+
+Approved verdict values:
+
+- `pass`
+- `warn`
+- `fail`
+- `skip`
+
+Approved fields:
+
+- required `checkpoint`: checkpoint name or identifier
+- required `verdict`: one of `pass | warn | fail | skip`
+- required `summary`: short outcome summary
+- optional `issues`: list of notable problems or concerns
+- optional `nextSteps`: list of follow-up actions
+
+Reference shape:
+
+```ts
+type CheckpointVerdict = "pass" | "warn" | "fail" | "skip";
+
+interface CheckpointResult {
+  checkpoint: string;
+  verdict: CheckpointVerdict;
+  summary: string;
+  issues?: string[];
+  nextSteps?: string[];
+}
+```
+
+Non-goals for this MVP:
+
+- changing runtime workflow behavior
+- deciding where checkpoint results are stored
+- auto-writing checkpoint result files
+- adding CLI checkpoint commands or output changes
+
+Future extension point:
+
+- a later task may decide when checkpoint results are produced and where they live, while keeping this verdict vocabulary distinct from other status systems
+
 ## Artifact Rules
 
 - Do not store critical state only in memory.

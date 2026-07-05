@@ -1,0 +1,42 @@
+{
+  "taskId": "2026-07-03/land-issue-19-checkpoint-result-format",
+  "type": "feature",
+  "phase": "finalization",
+  "status": "completed",
+  "allowedToCode": true,
+  "currentSlice": "slice-1-format-docs-and-type",
+  "gatePolicy": {
+    "recommended": "strict",
+    "selected": "strict",
+    "reason": "Boundary-sensitive checkpoint/result semantics should not blur existing status vocabularies or introduce runtime behavior prematurely.",
+    "finalApprovalRequired": true
+  },
+  "slices": [
+    {
+      "id": "slice-1-format-docs-and-type",
+      "status": "completed",
+      "gateClass": "boundary-sensitive",
+      "risk_score": 4,
+      "gateReasons": [
+        "workflow-quality-semantics",
+        "status-vocabulary-boundary",
+        "future-extension-point"
+      ]
+    }
+  ],
+  "gates": {
+    "requirementFrozen": true,
+    "planApproved": true,
+    "contextPackReady": true,
+    "criticPassed": true,
+    "implementationDone": true,
+    "reviewPassed": true,
+    "validationPassed": true
+  },
+  "files": {
+    "requirement": ".task/2026-07-03/land-issue-19-checkpoint-result-format/requirement.md",
+    "implementationPlan": ".task/2026-07-03/land-issue-19-checkpoint-result-format/implementation-plan.md",
+    "contextPack": ".task/2026-07-03/land-issue-19-checkpoint-result-format/context-pack.md"
+  },
+  "updatedAt": "2026-07-03T00:00:00Z"
+}
