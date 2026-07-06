@@ -17,7 +17,8 @@
     "dev": "tsx src/cli.ts",
     "check": "tsc --noEmit",
     "smoke:init": "node scripts/smoke-init.mjs",
-    "smoke:article-status": "node scripts/smoke-article-status.mjs"
+    "smoke:article-status": "node scripts/smoke-article-status.mjs",
+    "smoke:mvp": "node scripts/smoke-mvp.mjs"
   },
   "dependencies": {
     "commander": "^12.1.0"

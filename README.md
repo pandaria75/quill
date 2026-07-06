@@ -20,7 +20,7 @@ The first MVP is intentionally narrower: one fixed technical blog workflow that 
 
 ## MVP Workflow
 
-The planned MVP workflow is:
+The current MVP workflow is:
 
 ```text
 topic / notes
@@ -41,12 +41,11 @@ Every stage leaves a Markdown artifact that can be edited by a person. Quill sho
 - `quill new <topic>` creates a local article workspace with Markdown artifacts.
 - `quill status <article-slug>` reports file/content detection status for each artifact: `missing`, `empty`, `pending`, or `exists`.
 - `quill step <article-slug> <step>` loads the configured workflow, reads the required input artifacts, calls the configured model provider, and writes the target artifact.
+- `quill run <article-slug>` executes the fixed technical-blog workflow in order, prints per-step progress, and stops clearly on the first generation failure.
 
 These runtime detection labels are separate from any future lifecycle/frontmatter labels such as `created`, `generated`, `edited`, `reviewed`, or `final`. The current MVP CLI reports the detection labels above; it does not enforce lifecycle statuses.
 
 ## Model-Backed Step Behavior
-
-- `quill run <article-slug>`: planned full technical blog workflow execution.
 
 Current assumptions and guards:
 
@@ -56,6 +55,15 @@ Current assumptions and guards:
 - The OpenAI-compatible chat client is an internal implementation detail for current MVP capability, not a public API commitment.
 - Existing non-empty output artifacts are protected from overwrite by default. Use `--force` only when you intentionally want to replace an existing non-empty artifact.
 - Live provider execution depends on local credentials/network/config and should not be assumed from scaffold-only smoke checks.
+
+Offline smoke coverage is available with:
+
+```bash
+npm run build
+npm run smoke:mvp
+```
+
+This smoke covers local scaffold/status behavior plus the expected no-key failure path for `quill step` and `quill run`. It does not verify successful live generation; that still requires `QUILL_API_KEY` and provider access.
 
 ## Project Structure
 

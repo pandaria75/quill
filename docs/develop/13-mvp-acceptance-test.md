@@ -1,5 +1,18 @@
 # MVP Acceptance Test
 
+## Offline Smoke Baseline
+
+Default automated MVP smoke is offline and does not require `QUILL_API_KEY` or live provider access:
+
+```bash
+npm run build
+npm run smoke:mvp
+```
+
+This smoke verifies local scaffold/status behavior and confirms that model-backed commands fail clearly without a key. It does **not** verify successful live generation.
+
+## Manual Live-Provider Flow
+
 Run from a clean test workspace:
 
 ```bash
@@ -26,6 +39,8 @@ quill status <slug>
 11. There is no Marionettist runtime dependency.
 12. README can guide the user through the flow.
 
+Live end-to-end generation is only considered verified when `QUILL_API_KEY` is intentionally provided and `quill run <slug>` completes successfully against a reachable provider.
+
 ## No API Key Behavior
 
 Without `QUILL_API_KEY`:
@@ -35,6 +50,7 @@ Without `QUILL_API_KEY`:
 - `quill status` must work.
 - `quill step` and `quill run` must show a clear missing API key error when generation is required.
 - Quill must not generate empty `final.md` and claim success.
+- `npm run smoke:mvp` is the default regression check for this no-key boundary.
 
 ## Smoke Test Topic
 

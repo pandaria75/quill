@@ -1,10 +1,10 @@
 {
-  "taskId": "2026-07-06/land-issues-14-15-llm-step",
+  "taskId": "2026-07-06/land-issues-16-18-run-artifact-smoke",
   "type": "feature",
   "phase": "finalization",
   "allowedToCode": true,
-  "currentSlice": "slice-3-final-evidence",
-  "lastGate": "slice-3-final-evidence",
+  "currentSlice": null,
+  "lastGate": "slice-3-docs-and-final-evidence-pass",
   "nextCommand": "final approval / issue closure",
   "updatedAt": "2026-07-06T00:00:00Z"
 }

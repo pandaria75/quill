@@ -1,0 +1,52 @@
+{
+  "taskId": "2026-07-06/land-issues-16-18-run-artifact-smoke",
+  "type": "feature",
+  "phase": "finalization",
+  "status": "completed",
+  "allowedToCode": true,
+  "currentSlice": null,
+  "gatePolicy": {
+    "recommended": "balanced",
+    "selected": "balanced",
+    "reason": "Workflow-sensitive but bounded MVP CLI/test/docs work. User accepted the recommended offline smoke and no-rewrite approach; balanced matches repository default while preserving required gates.",
+    "finalApprovalRequired": true
+  },
+  "slices": [
+    {
+      "id": "slice-1-run-mvp-ux",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 2,
+      "gateReasons": ["cli-workflow", "bounded-command-ux", "no-architecture-change"]
+    },
+    {
+      "id": "slice-2-offline-mvp-smoke",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": ["smoke-test", "cli-output-contract", "offline-credential-boundary"]
+    },
+    {
+      "id": "slice-3-docs-and-final-evidence",
+      "status": "completed",
+      "gateClass": "simple",
+      "risk_score": 2,
+      "gateReasons": ["docs-sync", "issue-evidence"]
+    }
+  ],
+  "gates": {
+    "requirementFrozen": true,
+    "planApproved": true,
+    "contextPackReady": true,
+    "criticPassed": false,
+    "implementationDone": true,
+    "reviewPassed": true,
+    "validationPassed": true
+  },
+  "files": {
+    "requirement": ".task/2026-07-06/land-issues-16-18-run-artifact-smoke/requirement.md",
+    "implementationPlan": ".task/2026-07-06/land-issues-16-18-run-artifact-smoke/implementation-plan.md",
+    "contextPack": ".task/2026-07-06/land-issues-16-18-run-artifact-smoke/context-pack.md"
+  },
+  "updatedAt": "2026-07-06T00:00:00Z"
+}
