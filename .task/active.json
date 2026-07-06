@@ -1,10 +1,10 @@
 {
-  "taskId": "2026-07-03/land-issue-19-checkpoint-result-format",
+  "taskId": "2026-07-06/land-issues-11-13-blog-workflow-artifacts",
   "type": "feature",
   "phase": "finalization",
   "allowedToCode": true,
-  "currentSlice": "slice-1-format-docs-and-type",
-  "lastGate": "slice-1-format-docs-and-type",
-  "nextCommand": "commit/push/comment/close issue #19",
-  "updatedAt": "2026-07-03T00:00:00Z"
+  "currentSlice": "slice-4-review-checklist-injection",
+  "lastGate": "slice-4-review-checklist-injection",
+  "nextCommand": "final approval / commit / issue follow-up",
+  "updatedAt": "2026-07-06T00:00:00Z"
 }

@@ -1,0 +1,59 @@
+{
+  "taskId": "2026-07-06/land-issues-11-13-blog-workflow-artifacts",
+  "type": "feature",
+  "phase": "finalization",
+  "status": "in_progress",
+  "allowedToCode": true,
+  "currentSlice": "slice-4-review-checklist-injection",
+  "gatePolicy": {
+    "recommended": "balanced",
+    "selected": "balanced",
+    "reason": "Tier M bounded CLI/runtime artifact-loading change with moderate regression risk; repository default is balanced and the user has not requested a stricter or more autonomous override.",
+    "finalApprovalRequired": true
+  },
+  "slices": [
+    {
+      "id": "slice-1-init-local-artifacts",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": ["init-output-contract", "local-artifact-layout", "user-editable-config"]
+    },
+    {
+      "id": "slice-2-workflow-loading-validation",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": ["runtime-json-loading", "validation-behavior", "cli-regression-risk"]
+    },
+    {
+      "id": "slice-3-runtime-prompt-template-loading",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": ["prompt-behavior-change", "runtime-template-loading", "generated-artifact-compatibility"]
+    },
+    {
+      "id": "slice-4-review-checklist-injection",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": ["review-step-behavior", "prompt-injection-path", "checklist-runtime-loading"]
+    }
+  ],
+  "gates": {
+    "requirementFrozen": true,
+    "planApproved": true,
+    "contextPackReady": true,
+    "criticPassed": false,
+    "implementationDone": true,
+    "reviewPassed": true,
+    "validationPassed": true
+  },
+  "files": {
+    "requirement": ".task/2026-07-06/land-issues-11-13-blog-workflow-artifacts/requirement.md",
+    "implementationPlan": ".task/2026-07-06/land-issues-11-13-blog-workflow-artifacts/implementation-plan.md",
+    "contextPack": ".task/2026-07-06/land-issues-11-13-blog-workflow-artifacts/context-pack.md"
+  },
+  "updatedAt": "2026-07-06T00:00:00Z"
+}

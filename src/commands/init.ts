@@ -8,6 +8,8 @@ export async function initCommand(cwd = process.cwd()): Promise<void> {
   const skipped: string[] = [];
 
   await ensureDir(join(cwd, ".quill"));
+  await ensureDir(join(cwd, ".quill", "checklists"));
+  await ensureDir(join(cwd, ".quill", "prompts"));
   await ensureDir(join(cwd, ".quill", "styles"));
   await ensureDir(join(cwd, ".quill", "templates"));
   await ensureDir(join(cwd, ".quill", "workflows"));
@@ -15,6 +17,13 @@ export async function initCommand(cwd = process.cwd()): Promise<void> {
 
   const files: Array<[string, string]> = [
     [join(cwd, ".quill", "quill.config.json"), defaultConfigJson()],
+    [join(cwd, ".quill", "checklists", "review.md"), reviewChecklistTemplate()],
+    [join(cwd, ".quill", "prompts", "brief.md"), briefPromptTemplate()],
+    [join(cwd, ".quill", "prompts", "sources.md"), sourcesPromptTemplate()],
+    [join(cwd, ".quill", "prompts", "outline.md"), outlinePromptTemplate()],
+    [join(cwd, ".quill", "prompts", "draft.md"), draftPromptTemplate()],
+    [join(cwd, ".quill", "prompts", "review.md"), reviewPromptTemplate()],
+    [join(cwd, ".quill", "prompts", "final.md"), finalPromptTemplate()],
     [join(cwd, ".quill", "styles", "default.md"), defaultStyleProfile()],
     [join(cwd, ".quill", "templates", "brief.md"), briefTemplate()],
     [join(cwd, ".quill", "templates", "sources.md"), sourcesTemplate()],
@@ -62,6 +71,187 @@ function reviewTemplate(): string {
 
 function finalTemplate(): string {
   return `# Final\n\nTODO\n`;
+}
+
+function briefPromptTemplate(): string {
+  return [
+    "# Brief Prompt",
+    "",
+    "## Goal",
+    "",
+    "Generate an article brief from the topic and style profile.",
+    "",
+    "## Inputs",
+    "",
+    "- topic",
+    "- style profile",
+    "",
+    "## Output",
+    "",
+    "Return Markdown using this structure:",
+    "",
+    "```markdown",
+    "# Brief",
+    "",
+    "## Topic",
+    "",
+    "## Target Audience",
+    "",
+    "## Core Message",
+    "",
+    "## Angle",
+    "",
+    "## Constraints",
+    "",
+    "## Notes",
+    "```",
+    ""
+  ].join("\n");
+}
+
+function sourcesPromptTemplate(): string {
+  return [
+    "# Sources Prompt",
+    "",
+    "## Goal",
+    "",
+    "Organize user-provided material without automatic web research.",
+    "",
+    "## Guidance",
+    "",
+    "- If the user provided no material, keep placeholders and make the missing information obvious.",
+    "- Do not invent sources or claims.",
+    "",
+    "## Output",
+    "",
+    "Return Markdown using this structure:",
+    "",
+    "```markdown",
+    "# Sources",
+    "",
+    "## User Provided Notes",
+    "",
+    "## Reference Links",
+    "",
+    "## Claims To Verify Later",
+    "",
+    "## Missing Information",
+    "```",
+    ""
+  ].join("\n");
+}
+
+function outlinePromptTemplate(): string {
+  return [
+    "# Outline Prompt",
+    "",
+    "## Goal",
+    "",
+    "Create a clear article outline from the brief and sources.",
+    "",
+    "## Output",
+    "",
+    "Return Markdown using this structure:",
+    "",
+    "```markdown",
+    "# Outline",
+    "",
+    "## Working Title",
+    "",
+    "## Opening",
+    "",
+    "## Sections",
+    "",
+    "### 1.",
+    "### 2.",
+    "### 3.",
+    "",
+    "## Conclusion",
+    "",
+    "## Notes",
+    "```",
+    ""
+  ].join("\n");
+}
+
+function draftPromptTemplate(): string {
+  return [
+    "# Draft Prompt",
+    "",
+    "## Goal",
+    "",
+    "Write a first draft from the brief, sources, outline, and style profile.",
+    "",
+    "## Requirements",
+    "",
+    "- avoid generic AI flavor",
+    "- avoid marketing tone",
+    "- avoid empty abstractions",
+    "- include concrete scenarios and tradeoffs",
+    "- output plain Markdown",
+    "",
+    "## Output",
+    "",
+    "Return Markdown using this structure:",
+    "",
+    "```markdown",
+    "# Draft",
+    "",
+    "Body content.",
+    "```",
+    ""
+  ].join("\n");
+}
+
+function reviewPromptTemplate(): string {
+  return [
+    "# Review Prompt",
+    "",
+    "## Goal",
+    "",
+    "Review the draft.",
+    "",
+    "## Check",
+    "",
+    "- structure clarity",
+    "- point clarity",
+    "- AI flavor",
+    "- empty phrasing",
+    "- style profile fit",
+    "- factual risks",
+    "- target platform fit",
+    "",
+    "## Output",
+    "",
+    "Return Markdown using this structure:",
+    "",
+    "```markdown",
+    "# Review",
+    "",
+    "## Summary",
+    "",
+    "## Structure Issues",
+    "",
+    "## Style Issues",
+    "",
+    "## AI Flavor Issues",
+    "",
+    "## Factual Risks",
+    "",
+    "## Suggested Fixes",
+    "",
+    "## Decision",
+    "```",
+    ""
+  ].join("\n");
+}
+
+function finalPromptTemplate(): string {
+  return `# Final Prompt\n\n## Goal\n\nProduce \`final.md\` from the draft, review, and style profile.\n\n## Requirements\n\n- keep the draft's core argument\n- repair issues from review\n- reduce AI flavor\n- do not introduce unsupported new facts\n- output publishable Markdown\n`;
+}
+
+function reviewChecklistTemplate(): string {
+  return `# Review Checklist\n\n## Structure\n\n- The opening names a concrete problem.\n- Sections build on each other.\n- The conclusion makes a clear judgment.\n\n## Style\n\n- The draft sounds like a real developer.\n- The draft avoids generic marketing language.\n- The draft uses concrete examples where possible.\n\n## AI Flavor\n\n- Avoids mechanical transitions.\n- Avoids empty abstractions.\n- Avoids overconfident claims without support.\n\n## Factual Risk\n\n- Claims that need verification are marked.\n- Unsupported new facts are not introduced in final polish.\n`;
 }
 
 function technicalBlogWorkflow(): string {

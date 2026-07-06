@@ -8,6 +8,13 @@ const cliPath = join(repoRoot, 'dist', 'cli.js');
 const sentinel = 'SMOKE_INIT_SENTINEL';
 const expectedQuillFiles = [
   '.quill/quill.config.json',
+  '.quill/checklists/review.md',
+  '.quill/prompts/brief.md',
+  '.quill/prompts/sources.md',
+  '.quill/prompts/outline.md',
+  '.quill/prompts/draft.md',
+  '.quill/prompts/review.md',
+  '.quill/prompts/final.md',
   '.quill/styles/default.md',
   '.quill/templates/brief.md',
   '.quill/templates/sources.md',
