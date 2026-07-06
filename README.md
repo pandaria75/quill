@@ -2,7 +2,7 @@
 
 Quill is a local-first workflow CLI for high-quality content production. It is planned as the `@pandaria/quill` npm package.
 
-Current status: early planning / MVP stage. The repository contains the project plan, MVP architecture notes, and a small TypeScript CLI skeleton. The CLI currently focuses on local workspace scaffolding and artifact status checks; model-backed writing workflow execution is still MVP work.
+Current status: early planning / MVP stage. The repository contains the project plan, MVP architecture notes, and a small TypeScript CLI. Local workspace scaffolding and artifact status checks are working now, and the MVP also includes guarded model-backed `step` / `run` commands for the technical-blog workflow.
 
 ## Goals
 
@@ -40,15 +40,22 @@ Every stage leaves a Markdown artifact that can be edited by a person. Quill sho
 - `quill init` creates a local `.quill` workspace without overwriting existing files.
 - `quill new <topic>` creates a local article workspace with Markdown artifacts.
 - `quill status <article-slug>` reports file/content detection status for each artifact: `missing`, `empty`, `pending`, or `exists`.
+- `quill step <article-slug> <step>` loads the configured workflow, reads the required input artifacts, calls the configured model provider, and writes the target artifact.
 
 These runtime detection labels are separate from any future lifecycle/frontmatter labels such as `created`, `generated`, `edited`, `reviewed`, or `final`. The current MVP CLI reports the detection labels above; it does not enforce lifecycle statuses.
 
-## Planned MVP Commands
+## Model-Backed Step Behavior
 
-- `quill step <article-slug> <step>`: planned model-backed execution for one workflow step.
 - `quill run <article-slug>`: planned full technical blog workflow execution.
 
-The current skeleton includes guarded implementations for `step` and `run`. They require `QUILL_API_KEY` before model-backed generation and do not create empty final artifacts as fake success.
+Current assumptions and guards:
+
+- Run `quill init` first so local workflow, prompt, template, and checklist files exist under `.quill/`.
+- `quill step` uses the selected workflow (default `technical-blog`) and resolves its output artifact from the step name: `brief`, `sources`, `outline`, `draft`, `review`, or `final`.
+- The command requires the configured API key environment variable before generation. The default local config uses `QUILL_API_KEY` with the default OpenAI-compatible base URL `https://api.openai.com/v1`.
+- The OpenAI-compatible chat client is an internal implementation detail for current MVP capability, not a public API commitment.
+- Existing non-empty output artifacts are protected from overwrite by default. Use `--force` only when you intentionally want to replace an existing non-empty artifact.
+- Live provider execution depends on local credentials/network/config and should not be assumed from scaffold-only smoke checks.
 
 ## Project Structure
 

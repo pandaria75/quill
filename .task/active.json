@@ -1,10 +1,10 @@
 {
-  "taskId": "2026-07-06/land-issues-11-13-blog-workflow-artifacts",
+  "taskId": "2026-07-06/land-issues-14-15-llm-step",
   "type": "feature",
   "phase": "finalization",
   "allowedToCode": true,
-  "currentSlice": "slice-4-review-checklist-injection",
-  "lastGate": "slice-4-review-checklist-injection",
-  "nextCommand": "final approval / commit / issue follow-up",
+  "currentSlice": "slice-3-final-evidence",
+  "lastGate": "slice-3-final-evidence",
+  "nextCommand": "final approval / issue closure",
   "updatedAt": "2026-07-06T00:00:00Z"
 }

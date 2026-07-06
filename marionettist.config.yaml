@@ -50,7 +50,7 @@ docs:
   style: "design-and-architecture"
 
 knowledge:
-  mode: "mudball"
+  mode: "standard"
   maturity: "L1"
 
 validation:

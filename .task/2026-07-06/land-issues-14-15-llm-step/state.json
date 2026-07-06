@@ -1,0 +1,213 @@
+{
+  "taskId": "2026-07-06/land-issues-14-15-llm-step",
+  "type": "feature",
+  "phase": "finalization",
+  "status": "awaiting_final_approval",
+  "allowedToCode": true,
+  "currentSlice": "slice-3-final-evidence",
+  "tier": "M",
+  "workflowHint": "analysis-context",
+  "reviewLevel": "standard",
+  "modelProfileHint": "build",
+  "gatePolicy": {
+    "recommended": "balanced",
+    "selected": "balanced",
+    "reason": "Repository default balanced; user accepted bounded Tier M gap-fill landing for issues #14-#15; no task-local stricter override needed.",
+    "finalApprovalRequired": true
+  },
+  "knowledge": {
+    "mode": "standard",
+    "maturity": "L1"
+  },
+  "slices": [
+    {
+      "id": "slice-1-verification-baseline",
+      "name": "Verification Baseline And Minimal Behavior Fixes",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": [
+        "cli-behavior",
+        "llm-boundary",
+        "workflow-touchpoints"
+      ],
+      "criticRequired": false
+    },
+    {
+      "id": "slice-2-smoke-docs",
+      "name": "Smoke Verification And Landing Notes",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 2,
+      "gateReasons": [
+        "docs-user-behavior",
+        "smoke-verification"
+      ],
+      "criticRequired": false
+    },
+    {
+      "id": "slice-3-final-evidence",
+      "name": "Final Evidence And Handoff Cleanup",
+      "status": "completed",
+      "gateClass": "simple",
+      "risk_score": 1,
+      "gateReasons": [
+        "final-evidence",
+        "scope-check"
+      ],
+      "criticRequired": false
+    }
+  ],
+  "gates": {
+    "requirementFrozen": true,
+    "planApproved": true,
+    "contextPackReady": true,
+    "criticPassed": false,
+    "implementationDone": true,
+    "reviewPassed": true,
+    "validationPassed": true
+  },
+  "sliceResults": {
+    "slice-1-verification-baseline": {
+      "coderStatus": "PASS_NO_CHANGES",
+      "reviewVerdict": "PASS_WITH_WARNINGS",
+      "validation": [
+        {
+          "command": "npm run build",
+          "result": "PASS"
+        },
+        {
+          "command": "npm run check",
+          "result": "PASS"
+        }
+      ],
+      "warnings": [
+        "Context pack still described analysis gate state before this update.",
+        "Pre-existing uncommitted framework/workflow modifications outside this task may complicate future diff reviews."
+      ],
+      "notRun": [
+        {
+          "check": "live OpenAI-compatible provider call",
+          "reason": "credentials/network/config not required for slice-1"
+        }
+      ]
+    },
+    "slice-2-smoke-docs": {
+      "coderStatus": "PASS",
+      "reviewVerdict": "PASS_WITH_WARNINGS",
+      "filesChanged": [
+        "README.md"
+      ],
+      "validation": [
+        {
+          "command": "npm run smoke:init",
+          "result": "PASS"
+        },
+        {
+          "command": "npm run smoke:article-status",
+          "result": "PASS"
+        },
+        {
+          "command": "npm run build",
+          "result": "PASS"
+        },
+        {
+          "command": "npm run check",
+          "result": "PASS"
+        }
+      ],
+      "notRun": [
+        {
+          "check": "live OpenAI-compatible provider call",
+          "reason": "requires credentials/network/config; not claimed as validated"
+        }
+      ],
+      "warnings": [
+        "Low-severity pre-existing README ambiguity remains around run command status."
+      ]
+    },
+    "slice-3-final-evidence": {
+      "coderStatus": "PASS",
+      "reviewVerdict": "PASS",
+      "filesChanged": [
+        ".task/2026-07-06/land-issues-14-15-llm-step/state.json",
+        ".task/2026-07-06/land-issues-14-15-llm-step/context-pack.md"
+      ],
+      "validation": [
+        {
+          "command": "npm run build",
+          "result": "PASS",
+          "source": "carried forward from slice-1-verification-baseline and slice-2-smoke-docs"
+        },
+        {
+          "command": "npm run check",
+          "result": "PASS",
+          "source": "carried forward from slice-1-verification-baseline and slice-2-smoke-docs"
+        },
+        {
+          "command": "npm run smoke:init",
+          "result": "PASS",
+          "source": "carried forward from slice-2-smoke-docs"
+        },
+        {
+          "command": "npm run smoke:article-status",
+          "result": "PASS",
+          "source": "carried forward from slice-2-smoke-docs"
+        }
+      ],
+      "notRun": [
+        {
+          "check": "live OpenAI-compatible provider call",
+          "reason": "requires credentials/network/config; final evidence records this as not validated live"
+        }
+      ],
+      "warnings": [
+        "Validation evidence is recorded from completed earlier slices; slice-3 did not rerun commands because this slice is evidence-only cleanup.",
+        "Pre-existing unrelated workspace modifications remain outside this task and should be excluded from final review scope.",
+        "criticPassed is false because no critic was required or run, not because a critic failed."
+      ],
+      "handoff": {
+        "issueClosureStatus": "ready_for_final_review",
+        "followUpNotes": [
+          "Use slice-1 and slice-2 validation evidence as the issue-closure basis.",
+          "Do not claim live provider coverage without a separate credentialed run.",
+          "Keep final review bounded to task artifacts plus previously approved slice outputs."
+        ]
+      }
+    }
+  },
+  "files": {
+    "requirement": ".task/2026-07-06/land-issues-14-15-llm-step/requirement.md",
+    "implementationPlan": ".task/2026-07-06/land-issues-14-15-llm-step/implementation-plan.md",
+    "contextPack": ".task/2026-07-06/land-issues-14-15-llm-step/context-pack.md"
+  },
+  "validationCommands": [
+    "npm run build",
+    "npm run check",
+    "npm run smoke:init",
+    "npm run smoke:article-status"
+  ],
+  "stopConditions": [
+    "Need to add dependencies",
+    "Need to reimplement LLM client",
+    "Need to introduce model routing or shared core",
+    "Need to make LLM client public API",
+    "Validation requires unavailable live provider credentials",
+    "Any private content, API key, or personal account configuration would be committed"
+  ],
+  "updatedAt": "2026-07-06T00:00:00Z",
+  "finalEvidence": {
+    "status": "recorded",
+    "finalReviewReady": true,
+    "validationEvidence": [
+      "slice-1 build/check pass",
+      "slice-2 smoke/build/check pass",
+      "slice-1 and slice-2 review verdicts recorded",
+      "live provider validation explicitly recorded as NOT_RUN"
+    ],
+    "remainingRisks": [
+      "Live OpenAI-compatible provider behavior was not exercised with real credentials/network.",
+      "Pre-existing unrelated workspace modifications may add noise if final review is not kept task-bounded."
+    ]
+  }
+}
