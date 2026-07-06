@@ -4,7 +4,7 @@
 
 Create repository, MIT License, README, planning docs, TypeScript CLI skeleton, GitHub issues, and Project linkage.
 
-## P1: Quill MVP
+## P1: Current CLI Reference Harness
 
 Run the minimal article generation chain:
 
@@ -12,13 +12,37 @@ Run the minimal article generation chain:
 topic / sources -> brief -> outline -> draft -> review -> final
 ```
 
-The output must be editable Markdown and the CLI must work locally.
+The output must be editable Markdown and the CLI must work locally. This phase establishes a usable reference harness, not the final product center.
 
-## P2: Quality Enhancement
+## P2: Clarify Quill Core
+
+Document and stabilize the portable writing-kit center:
+
+- workflow methodology and step shape
+- prompts, skills, and execution guidance
+- artifact contracts such as plans, context packs, and review outputs
+- review gates and safety policies
+- memory-strategy expectations and adapter-facing boundaries
+
+## P3: Hermes-First Adapter Design
+
+Define Hermes as the first serious adapter target.
+
+Focus on responsibility boundaries only:
+
+- hosting and execution integration
+- model configuration handoff
+- memory/runtime boundary
+- tool/runtime integration boundary
+- artifact and review-gate handoff
+
+OpenCode and Pi stay later adapter targets.
+
+## P4: Quality Enhancement
 
 Improve article quality and reduce AI flavor with better style profiles, review checklists, checkpoint results, rewrite, repair, and polish capabilities.
 
-## P3: Workflow Expansion
+## P5: Workflow Expansion
 
 Add more content workflow families:
 
@@ -29,7 +53,7 @@ Add more content workflow families:
 - Bilibili video script
 - Xiaohongshu / Zhihu social post
 
-## P4: Article Block / Article IR Exploration
+## P6: Article Block / Article IR Exploration
 
 Evolve carefully:
 
@@ -44,10 +68,16 @@ Markdown
 
 Do not start with a full AST.
 
-## P5: Two-way Learning With Marionettist
+## P7: Later Adapters And Platform Integrations
 
-Stable workflow, artifact, checkpoint, model role, and review gate mechanisms from Quill may feed back into Marionettist. Marionettist may later become a shared Agent Workflow Harness across coding, writing, research, and ops workflows.
+After the Core boundary and Hermes path are clearer, later exploration may include:
 
-## P6: Platform Adaptation
+- OpenCode adapter
+- Pi adapter
+- other platform integrations only where they serve the core writing workflow kit
 
-Future exploration may include Hermes plugin, Pi plugin, OpenCode pathway, Codex release, Dify, ComfyUI, SearXNG, Jina, and related toolchains. These are not MVP goals.
+These are not near-term priorities.
+
+## P8: Two-way Learning With Marionettist
+
+Stable workflow, artifact, checkpoint, model role, and review gate mechanisms from Quill may feed back into Marionettist. The relationship should stay workflow-kit-oriented rather than turning Quill into a Marionettist clone or a generic runtime layer.

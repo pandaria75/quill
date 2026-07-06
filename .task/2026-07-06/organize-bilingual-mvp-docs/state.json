@@ -1,0 +1,32 @@
+{
+  "taskId": "2026-07-06/organize-bilingual-mvp-docs",
+  "type": "documentation",
+  "tier": "M",
+  "phase": "finalization",
+  "allowedToCode": true,
+  "currentSlice": "slice-1-bilingual-public-docs",
+  "gates": {
+    "analysisComplete": true,
+    "criticPassed": null,
+    "userConfirmedCoding": true
+  },
+  "gatePolicy": {
+    "recommended": "balanced",
+    "selected": "balanced",
+    "reason": "Docs-only but non-trivial because it adds public bilingual documentation structure and updates routing.",
+    "finalApprovalRequired": true
+  },
+  "slices": [
+    {
+      "id": "slice-1-bilingual-public-docs",
+      "title": "Create bilingual public software design and user docs",
+      "gateClass": "standard",
+      "risk_score": 2,
+      "criticRequired": false,
+      "status": "completed",
+      "reviewVerdict": "PASS",
+      "validation": "manual-docs-review-passed; build-tests-NOT_RUN-docs-only"
+    }
+  ],
+  "updatedAt": "2026-07-06T00:00:00Z"
+}

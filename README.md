@@ -1,8 +1,37 @@
 # Quill
 
-Quill is a local-first workflow CLI for high-quality content production. It is planned as the `@pandaria/quill` npm package.
+Quill is evolving toward **Quill Core plus adapters**: a writing-domain workflow kit whose methodology, prompts, skills, artifact contracts, and review discipline can travel across host environments.
 
-Current status: early planning / MVP stage. The repository contains the project plan, MVP architecture notes, and a small TypeScript CLI. Local workspace scaffolding and artifact status checks are working now, and the MVP also includes guarded model-backed `step` / `run` commands for the technical-blog workflow.
+Short-term priority: define **Quill Core** clearly and make **Hermes** the first serious adapter target. **OpenCode** and **Pi** are later adapter targets.
+
+Current status: early planning / MVP stage. The repository still contains a small TypeScript CLI and related docs. That CLI is the **current implementation, reference harness, and prototype**, not the long-term product center.
+
+Useful target-direction docs:
+
+- [Quill Core Architecture Target](./docs/target/quill-core-architecture.md)
+- [Hermes-First Adapter Design Target](./docs/target/hermes-adapter-design.md)
+
+## What Quill Is And Is Not
+
+Quill is intended to be:
+
+- a writing workflow methodology packaged as reusable artifacts, prompts, skills, and review gates
+- container-neutral at the core layer
+- model-provider-neutral at the core layer
+- memory-strategy-aware, not memory-runtime-owning
+- adapter-oriented, with Hermes first and OpenCode/Pi later
+
+Quill is not intended to become:
+
+- a new agent container or standalone host runtime
+- a generic workflow runtime
+- a model router or provider framework
+- a publishing platform
+- a replacement for Hermes, OpenCode, or Pi
+
+## Current Reference Harness
+
+Today, the repository's main runnable embodiment is a local-first, artifact-first, Markdown-first CLI MVP. It remains useful as the current reference harness for learning what Quill Core and future adapters should preserve.
 
 ## Goals
 
@@ -16,9 +45,9 @@ Quill is designed to help produce editable Markdown artifacts for:
 - video scripts
 - story or script drafts
 
-The first MVP is intentionally narrower: one fixed technical blog workflow that creates and updates `brief.md`, `sources.md`, `outline.md`, `draft.md`, `review.md`, and `final.md`.
+The current CLI MVP is intentionally narrower: one fixed technical blog workflow that creates and updates `brief.md`, `sources.md`, `outline.md`, `draft.md`, `review.md`, and `final.md`.
 
-## MVP Workflow
+## Current CLI MVP Workflow
 
 The current MVP workflow is:
 
@@ -34,7 +63,7 @@ topic / notes
 
 Every stage leaves a Markdown artifact that can be edited by a person. Quill should not hide important state only in model context.
 
-## What Works Now
+## What Works Now In The Reference Harness
 
 - `quill --help` shows the CLI surface.
 - `quill init` creates a local `.quill` workspace without overwriting existing files.
@@ -45,7 +74,7 @@ Every stage leaves a Markdown artifact that can be edited by a person. Quill sho
 
 These runtime detection labels are separate from any future lifecycle/frontmatter labels such as `created`, `generated`, `edited`, `reviewed`, or `final`. The current MVP CLI reports the detection labels above; it does not enforce lifecycle statuses.
 
-## Model-Backed Step Behavior
+## Model-Backed Step Behavior In The Current CLI MVP
 
 Current assumptions and guards:
 
@@ -65,11 +94,21 @@ npm run smoke:mvp
 
 This smoke covers local scaffold/status behavior plus the expected no-key failure path for `quill step` and `quill run`. It does not verify successful live generation; that still requires `QUILL_API_KEY` and provider access.
 
+## Documentation
+
+- 中文软件设计说明: [`docs/zh-CN/software-design.md`](./docs/zh-CN/software-design.md)
+- 中文用户使用文档: [`docs/zh-CN/user-guide.md`](./docs/zh-CN/user-guide.md)
+- English software design: [`docs/en/software-design.md`](./docs/en/software-design.md)
+- English user guide: [`docs/en/user-guide.md`](./docs/en/user-guide.md)
+- Target architecture: [`docs/target/quill-core-architecture.md`](./docs/target/quill-core-architecture.md)
+- Hermes-first adapter target: [`docs/target/hermes-adapter-design.md`](./docs/target/hermes-adapter-design.md)
+
 ## Project Structure
 
 ```text
-src/                 TypeScript CLI source
+src/                 TypeScript CLI source for the current reference harness
 docs/develop/        planning, scope, architecture, and MVP implementation docs
+docs/target/         target-state Quill Core and adapter direction docs
 docs/templates/      default writing templates
 docs/examples/       public examples only
 examples/articles/   placeholder for safe sample articles
@@ -102,17 +141,21 @@ QUILL_API_KEY=...
 
 Marionettist is the development harness for building Quill. Quill may borrow ideas from Marionettist such as workflow, skill, checkpoint, artifact, model role, and review gate.
 
-Quill MVP does not depend on the Marionettist runtime. It should run as an independent local CLI. If Quill later produces stable workflow primitives, those primitives may feed back into Marionettist, but Quill should not wait for a shared core before shipping a vertical MVP.
+The current CLI MVP does not depend on the Marionettist runtime. That independence is a fact about today's reference harness, not a statement that the long-term product center is a standalone CLI or host runtime. If Quill later produces stable workflow primitives, those primitives may feed back into Marionettist.
 
 ## Roadmap
 
+This is a condensed summary of [`docs/develop/02-roadmap.md`](./docs/develop/02-roadmap.md). Keep phase numbers aligned with that detailed roadmap.
+
 - P0: repository initialization, MIT license, docs, TypeScript CLI skeleton, GitHub issues and project linkage.
-- P1: MVP local technical blog workflow from topic and sources to final Markdown.
-- P2: quality improvements, style profiles, review checklist, checkpoints, repair and polish.
-- P3: more writing workflow families.
-- P4: Markdown block markers, then Article IR if justified.
-- P5: feed stable workflow primitives back to Marionettist.
-- P6: future platform integrations.
+- P1: current CLI MVP for a local technical blog workflow from topic and sources to final Markdown.
+- P2: clarify Quill Core contracts and architecture boundaries.
+- P3: Hermes-first adapter design and integration path.
+- P4: quality improvements, style profiles, review checklist, checkpoints, repair and polish.
+- P5: more writing workflow families and stronger reusable workflow-kit assets.
+- P6: careful Article Block / Article IR exploration if justified.
+- P7: later adapters such as OpenCode and Pi, plus platform integrations only where they support the core workflow-kit direction.
+- P8: two-way learning with Marionettist while keeping Quill workflow-kit-oriented rather than a Marionettist clone or generic runtime.
 
 ## Security And Privacy
 

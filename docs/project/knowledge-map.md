@@ -13,10 +13,12 @@ When `marionettist.config.yaml` exists, read `knowledge.mode` and `knowledge.mat
 ## Project Overview
 
 - Knowledge Docs:
+  - `docs/zh-CN/` for public Chinese product-facing documentation
+  - `docs/en/` for public English product-facing documentation
   - `docs/project/` for repository-wide workflow and routing
   - `docs/project/tier-policy-workflow-design.md` for installed future-facing Tier-policy workflow research boundaries and roadmap context
   - `docs/current/` for current-state knowledge about how the project works today
-  - `docs/target/` for desired future design, migration direction, or proposed architecture
+  - `docs/target/` for desired future design, migration direction, or proposed architecture, including Quill Core and adapter-direction docs such as `docs/target/quill-core-architecture.md` and `docs/target/hermes-adapter-design.md`
 - Rule Files:
   - `AGENTS.md`
   - `.aiassistant/rules/*.md`
@@ -64,6 +66,65 @@ If the current state is unclear, document the uncertainty as an unknown instead 
 - Validation:
   - confirm project-neutral language
   - confirm proposed workflow configurability remains design-only unless explicitly implemented in an approved slice
+
+## Public Product Documentation
+
+- Areas: user-facing explanation of the Quill MVP design and how to use it
+- Tags: public-docs, product, user-guide, software-design, bilingual
+- Docs:
+  - Chinese: `docs/zh-CN/software-design.md`, `docs/zh-CN/user-guide.md`
+  - English: `docs/en/software-design.md`, `docs/en/user-guide.md`
+- Rules:
+  - `AGENTS.md`
+- Read When:
+  - a reader wants a public overview of Quill MVP capabilities, workflow, boundaries, setup, validation expectations, or troubleshooting
+  - a task adds, renames, or updates public-facing Quill documentation
+- Boundaries:
+  - keep these docs product- and workflow-oriented, not as source-code indexes
+  - describe current MVP behavior and explicit non-goals clearly
+  - do not claim live provider generation is verified unless credentials and provider reachability were intentionally validated
+- Validation:
+  - confirm Chinese and English docs stay semantically aligned
+  - confirm the docs remain detailed enough for user understanding without turning into file/class/function inventories
+
+## Quill Core Target Architecture
+
+- Areas: future Quill Core positioning, architecture pivot, non-goals, and how target architecture differs from the current MVP/reference harness
+- Tags: target-architecture, quill-core, architecture-pivot, non-goals
+- Docs:
+  - Current context: `docs/current/`
+  - Public current-facing summaries: `docs/zh-CN/software-design.md`, `docs/en/software-design.md`
+  - Target: `docs/target/quill-core-architecture.md`
+- Rules:
+  - `AGENTS.md`
+- Read When:
+  - the task needs Quill's intended future architecture rather than only today's implementation
+  - a reader needs the Quill Core positioning or architecture non-goals
+- Boundaries:
+  - treat `docs/target/quill-core-architecture.md` as future-direction design, not proof of current implementation
+  - use `docs/current/` and public current-facing docs when the task is about what exists today
+  - keep routing architecture-oriented rather than turning this map into a repository index
+- Validation:
+  - confirm routing makes the current MVP/reference harness distinct from the target Quill Core design
+
+## Hermes-First Adapter Direction
+
+- Areas: first-adapter target design, adapter responsibility boundaries, and Hermes-first sequencing relative to later adapters
+- Tags: target-architecture, adapter, hermes, integration-direction
+- Docs:
+  - Target: `docs/target/hermes-adapter-design.md`
+  - Related target context: `docs/target/quill-core-architecture.md`
+- Rules:
+  - `AGENTS.md`
+- Read When:
+  - the task is about adapter-direction planning or Hermes-first integration boundaries
+  - a reader needs future adapter positioning without assuming current adapter implementation exists
+- Boundaries:
+  - treat this as target design only unless current-state docs explicitly confirm implementation
+  - do not infer undocumented Hermes, OpenCode, or Pi internals from routing alone
+  - keep the entry focused on responsibilities and sequencing, not file-by-file implementation detail
+- Validation:
+  - confirm the map makes Hermes adapter design discoverable while preserving the current-vs-target distinction
 
 ## Knowledge Maturity Routing
 

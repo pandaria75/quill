@@ -1,10 +1,10 @@
 {
-  "taskId": "2026-07-06/land-issues-16-18-run-artifact-smoke",
-  "type": "feature",
+  "taskId": "2026-07-06/issue-26-quill-core-adapters-architecture",
+  "type": "documentation",
   "phase": "finalization",
   "allowedToCode": true,
   "currentSlice": null,
-  "lastGate": "slice-3-docs-and-final-evidence-pass",
-  "nextCommand": "final approval / issue closure",
+  "lastGate": "final-approved",
+  "nextCommand": "task-complete",
   "updatedAt": "2026-07-06T00:00:00Z"
 }
