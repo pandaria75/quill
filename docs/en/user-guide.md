@@ -1,8 +1,12 @@
 # Quill MVP User Guide
 
+This guide is for the **current CLI MVP/reference harness**. It explains what you can run today while keeping Quill's target direction explicit: the long-term center of gravity is Quill Core plus adapters, with Hermes first and OpenCode/Pi later.
+
 ## 1. What Quill Can Do Today
 
 The current Quill MVP is meant for a local workflow where you create a writing workspace, manage a technical blog through several Markdown artifacts, and keep room for human editing throughout the process.
+
+That means this guide is intentionally about the **current reference harness**, not a claim that the CLI is Quill's final product center.
 
 Today it mainly supports:
 
@@ -54,6 +58,8 @@ For example:
 ```bash
 npm run dev -- init
 ```
+
+For future-facing architecture context, see `README.md` plus the target docs under `docs/target/`. Those target docs describe product direction only; they do not mean Hermes/OpenCode/Pi adapter behavior is fully implemented in this repository today.
 
 ## 4. Step One: Initialize a Workspace
 
@@ -289,6 +295,8 @@ QUILL_API_KEY
 
 That means generation commands read credentials from the environment variable at runtime.
 
+This is a fact about the **current CLI/reference harness**. It should not be read as “Quill Core owns provider credentials or model account configuration” in the target architecture.
+
 ### 9.2 Minimum Requirements
 
 To validate real generation, you need at least:
@@ -296,6 +304,8 @@ To validate real generation, you need at least:
 - `QUILL_API_KEY` to be set
 - a reachable OpenAI-compatible provider
 - local configuration and network access that can actually reach that provider
+
+In the target Core-plus-adapters direction, those environment/runtime concerns belong to the host or adapter layer rather than to Quill Core itself.
 
 ### 9.3 Minimal Reminder
 
@@ -419,7 +429,10 @@ To use Quill with the right expectations, keep these boundaries in mind:
 
 - there is only one fixed technical-blog workflow today
 - the main value is editable local artifacts, not maximum automation
+- the current CLI is a reference harness/prototype, not the long-term product center
 - the current focus is one end-to-end article flow, not a general platform
+- future product direction is Quill Core plus adapters, with Hermes first and OpenCode/Pi later
+- target adapters/hosts are where runtime, memory, tools, model selection, and credential handling should live
 - public docs describe current behavior and cautious extension points, not inflated roadmap promises
 
 With those expectations, it becomes much easier to understand why Quill is designed this way and whether it fits your writing workflow today.

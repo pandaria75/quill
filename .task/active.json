@@ -1,10 +1,10 @@
 {
-  "taskId": "2026-07-07/issues-29-30-hermes-adapter",
-  "type": "feature",
+  "taskId": "2026-07-07/issues-31-32-public-docs-pivot",
+  "type": "documentation",
   "phase": "finalization",
-  "allowedToCode": true,
+  "allowedToCode": false,
   "currentSlice": null,
-  "lastGate": "final-approved",
-  "nextCommand": "task-complete",
-  "updatedAt": "2026-07-07T09:51:15Z"
+  "lastGate": "slice-review-passed",
+  "nextCommand": "final-approval",
+  "updatedAt": "2026-07-07T10:24:00Z"
 }

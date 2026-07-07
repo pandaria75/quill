@@ -31,7 +31,7 @@ Quill is not intended to become:
 
 ## Current Reference Harness
 
-Today, the repository's main runnable embodiment is a local-first, artifact-first, Markdown-first CLI MVP. It remains useful as the current reference harness for learning what Quill Core and future adapters should preserve.
+Today, the repository's main runnable embodiment is a local-first, artifact-first, Markdown-first CLI MVP. It remains useful as the current reference harness for learning what Quill Core and future adapters should preserve, but it is not the long-term product center.
 
 ## Goals
 
@@ -81,6 +81,7 @@ Current assumptions and guards:
 - Run `quill init` first so local workflow, prompt, template, and checklist files exist under `.quill/`.
 - `quill step` uses the selected workflow (default `technical-blog`) and resolves its output artifact from the step name: `brief`, `sources`, `outline`, `draft`, `review`, or `final`.
 - The command requires the configured API key environment variable before generation. The default local config uses `QUILL_API_KEY` with the default OpenAI-compatible base URL `https://api.openai.com/v1`.
+- In the current CLI MVP, provider credentials and model selection live in the local host/workspace configuration. In the target Core-plus-adapters direction, Quill Core should not own provider credentials, model account configuration, or host runtime selection.
 - The OpenAI-compatible chat client is an internal implementation detail for current MVP capability, not a public API commitment.
 - Existing non-empty output artifacts are protected from overwrite by default. Use `--force` only when you intentionally want to replace an existing non-empty artifact.
 - Live provider execution depends on local credentials/network/config and should not be assumed from scaffold-only smoke checks.

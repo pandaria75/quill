@@ -1,0 +1,46 @@
+{
+  "taskId": "2026-07-07/issues-31-32-public-docs-pivot",
+  "type": "documentation",
+  "phase": "finalization",
+  "allowedToCode": false,
+  "tier": "M",
+  "gatePolicy": {
+    "recommended": "balanced",
+    "selected": "balanced",
+    "reason": "Clear bounded public documentation polish with no source/runtime changes; preserve analysis gate and final approval.",
+    "finalApprovalRequired": true
+  },
+  "gates": {
+    "analysisComplete": true,
+    "criticPassed": null,
+    "codingApproved": true,
+    "reviewPassed": true,
+    "finalApproved": false
+  },
+  "currentSlice": {
+    "id": "S1-public-docs-polish",
+    "name": "Public docs polish for issues #31/#32",
+    "gateClass": "standard",
+    "risk_score": 2,
+    "gateReasons": [
+      "docs-only",
+      "bilingual-alignment-required",
+      "current-vs-target-wording-required"
+    ],
+    "criticRequired": false,
+    "explicitGateRequired": true
+  },
+  "validation": {
+    "manualBilingualAlignment": "passed by coder self-check and reviewer diff-review",
+    "issueAcceptanceChecklist": "passed by reviewer against #31/#32 acceptance criteria",
+    "npmRunCheck": "passed",
+    "liveProviderValidation": "NOT_RUN: docs-only task, no runtime generation changes",
+    "hermesSmoke": "NOT_RUN: docs-only task, no adapter behavior changes"
+  },
+  "artifacts": {
+    "requirement": ".task/2026-07-07/issues-31-32-public-docs-pivot/requirement.md",
+    "implementationPlan": ".task/2026-07-07/issues-31-32-public-docs-pivot/implementation-plan.md",
+    "contextPack": ".task/2026-07-07/issues-31-32-public-docs-pivot/context-pack.md"
+  },
+  "updatedAt": "2026-07-07T10:24:00Z"
+}

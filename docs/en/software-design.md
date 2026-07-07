@@ -120,8 +120,9 @@ The approved architecture direction is to keep Quill Core:
 - model-provider-neutral
 - memory-strategy-aware but not memory-runtime-owning
 - responsible for workflow methodology, artifact contracts, prompts/skills, and review gates
+- not responsible for provider credentials, model account configuration, or host runtime/tool selection
 
-In that direction, adapters are where host-specific execution concerns begin. Hermes is the first target adapter, while OpenCode and Pi are later targets. This document does not define their internals or APIs.
+In that direction, adapters or hosts are where host-specific execution concerns begin, including runtime environment, memory implementation, tools, and model selection. Hermes is the first target adapter, while OpenCode and Pi are later targets. This document does not define their internals or APIs.
 
 ## 4. Runtime Shape and Directory Roles
 
@@ -323,6 +324,8 @@ The local workspace config `.quill/quill.config.json` defines:
 - default model
 - model names by role
 - article, style, and workflow paths
+
+This is a description of the **current CLI/reference harness configuration surface**, not a claim that future Quill Core should own provider credentials or provider-specific account configuration.
 
 The documented default API key environment variable is:
 
