@@ -1,0 +1,181 @@
+{
+  "taskId": "2026-07-06/issues-27-28-quill-core-package",
+  "type": "feature",
+  "phase": "finalization",
+  "status": "completed",
+  "allowedToCode": true,
+  "currentSlice": null,
+  "gatePolicy": {
+    "recommended": "strict",
+    "selected": "autonomous",
+    "reason": "User selected autonomous; strict remains advisory because package/build boundaries, CLI reuse, and release-surface risk are concrete.",
+    "finalApprovalRequired": true
+  },
+  "slices": [
+    {
+      "id": "S1",
+      "name": "Establish Core Package Boundary",
+      "gateClass": "boundary-sensitive",
+      "risk_score": 4,
+      "criticRequired": true,
+      "status": "completed",
+      "reviewVerdict": "PASS_WITH_WARNINGS",
+      "criticVerdict": "PASS_WITH_WARNINGS"
+    },
+    {
+      "id": "S2",
+      "name": "Move Portable Init Assets Into Core",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "criticRequired": false,
+      "status": "completed",
+      "reviewVerdict": "PASS"
+    },
+    {
+      "id": "S3",
+      "name": "Add Technical-Blog Writing-Skill Contracts",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "criticRequired": false,
+      "status": "completed",
+      "reviewVerdict": "PASS"
+    },
+    {
+      "id": "S4",
+      "name": "Wire CLI Init To Reuse Core Assets",
+      "gateClass": "boundary-sensitive",
+      "risk_score": 4,
+      "criticRequired": true,
+      "status": "completed",
+      "reviewVerdict": "PASS_WITH_WARNINGS",
+      "criticVerdict": "PASS_WITH_WARNINGS",
+      "reviewAttempts": 2
+    },
+    {
+      "id": "S5",
+      "name": "Final Packaging, Docs Routing, and Regression Validation",
+      "gateClass": "boundary-sensitive",
+      "risk_score": 4,
+      "criticRequired": true,
+      "status": "completed",
+      "reviewVerdict": "PASS_WITH_WARNINGS",
+      "criticVerdict": "PASS_WITH_WARNINGS"
+    }
+  ],
+  "gates": {
+    "requirementFrozen": true,
+    "planApproved": true,
+    "contextPackReady": true,
+    "criticPassed": true,
+    "implementationDone": true,
+    "reviewPassed": true,
+    "validationPassed": true
+  },
+  "critic": {
+    "planReviewVerdict": "PASS_WITH_WARNINGS",
+    "summary": "Plan is coherent; S1 resolved asset representation/package inclusion and recorded the current init-output baseline as git-recoverable before S2. S1 pre-done critic returned PASS_WITH_WARNINGS."
+  },
+  "sliceEvidence": {
+    "S1": {
+      "changedFiles": [
+        "package.json",
+        "packages/core/package.json",
+        "packages/core/tsconfig.json",
+        "packages/core/src/index.ts",
+        "packages/core/README.md"
+      ],
+      "validation": [
+        "npm run build: PASS",
+        "npm run smoke:init: PASS",
+        "npm pack --dry-run: PASS"
+      ],
+      "reviewVerdict": "PASS_WITH_WARNINGS",
+      "preDoneCriticVerdict": "PASS_WITH_WARNINGS",
+      "baselineArtifact": ".task/2026-07-06/issues-27-28-quill-core-package/init-baseline.md"
+    },
+    "S2": {
+      "changedFiles": [
+        "packages/core/src/initAssets.ts",
+        "packages/core/src/index.ts"
+      ],
+      "validation": [
+        "npm run build: PASS",
+        "init-output comparison: NOT_RUN until S4 CLI wiring",
+        "asset fidelity comparison: PASS per reviewer",
+        "provider/runtime-neutrality scan: PASS"
+      ],
+      "reviewVerdict": "PASS",
+      "continuationDecision": "Continued to S3 under selected autonomous policy because S3 is gateClass standard, risk_score 3, criticRequired false, and no explicit stop applies."
+    },
+    "S3": {
+      "changedFiles": [
+        "packages/core/src/writingSkillContracts.ts",
+        "packages/core/src/index.ts",
+        "packages/core/dist/writingSkillContracts.js",
+        "packages/core/dist/writingSkillContracts.d.ts",
+        "packages/core/dist/writingSkillContracts.js.map",
+        "packages/core/dist/index.js",
+        "packages/core/dist/index.d.ts",
+        "packages/core/dist/index.js.map"
+      ],
+      "validation": [
+        "npm run build: PASS",
+        "manual section-completeness and neutrality review: PASS",
+        "npm run smoke:init: NOT_RUN until S4/S5 CLI wiring",
+        "npm pack --dry-run: NOT_RUN until S5 packaging validation"
+      ],
+      "reviewVerdict": "PASS",
+      "continuationDecision": "Stopped before S4 because S4 is gateClass boundary-sensitive, risk_score 4, and criticRequired true; selected autonomous cannot bypass this mandatory stop."
+    },
+    "S4": {
+      "changedFiles": [
+        "src/commands/init.ts",
+        "package.json"
+      ],
+      "validation": [
+        "clean build after removing packages/core/dist: PASS",
+        "npm run build: PASS",
+        "npm run smoke:init: PASS",
+        "npm pack --dry-run: NOT_RUN (deferred to S5 final packaging validation)"
+      ],
+      "reviewVerdict": "PASS_WITH_WARNINGS",
+      "preDoneCriticVerdict": "PASS_WITH_WARNINGS",
+      "reviewAttempts": 2,
+      "residualWarnings": [
+        "npm run dev / tsx path may require prebuilt packages/core/dist; S5 must assess or document this developer-experience risk.",
+        "S5 must run npm pack --dry-run and close final baseline/package regression evidence."
+      ],
+      "continuationDecision": "Stopped before S5 because S5 is gateClass boundary-sensitive, risk_score 4, and criticRequired true; selected autonomous cannot bypass this mandatory stop."
+    },
+    "S5": {
+      "changedFiles": [
+        ".gitignore",
+        "packages/core/README.md",
+        "docs/project/knowledge-map.md"
+      ],
+      "validation": [
+        "npm run build: PASS",
+        "npm run smoke:init: PASS",
+        "npm pack --dry-run: PASS",
+        "package includes packages/core/README.md: PASS",
+        "package includes packages/core/dist index/initAssets/writingSkillContracts outputs: PASS",
+        "prohibited-content scan: PASS",
+        "packages/core/dist ignored as generated output while npm pack still includes built files after npm run build: PASS"
+      ],
+      "reviewVerdict": "PASS_WITH_WARNINGS",
+      "preDoneCriticVerdict": "PASS_WITH_WARNINGS",
+      "residualWarnings": [
+        "npm run dev / tsx requires prebuilt packages/core/dist in clean-checkout dev flows; documented as a caveat, not fixed in this task.",
+        "README heading 'S1 Design Decision' may be renamed later for long-lived doc clarity."
+      ],
+      "continuationDecision": "Final approval required by task gatePolicy.finalApprovalRequired."
+    }
+  },
+  "files": {
+    "requirement": ".task/2026-07-06/issues-27-28-quill-core-package/requirement.md",
+    "implementationPlan": ".task/2026-07-06/issues-27-28-quill-core-package/implementation-plan.md",
+    "contextPack": ".task/2026-07-06/issues-27-28-quill-core-package/context-pack.md",
+    "initBaseline": ".task/2026-07-06/issues-27-28-quill-core-package/init-baseline.md"
+  },
+  "updatedAt": "2026-07-07T00:00:00Z"
+}

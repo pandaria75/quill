@@ -1,0 +1,9 @@
+{
+  "name": "@pandaria/quill-core-internal",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Internal Quill Core package boundary for portable workflow assets.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts"
+}

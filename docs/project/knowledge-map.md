@@ -107,6 +107,26 @@ If the current state is unclear, document the uncertainty as an unknown instead 
 - Validation:
   - confirm routing makes the current MVP/reference harness distinct from the target Quill Core design
 
+## Quill Core Current Packaging Surface
+
+- Areas: current packaged Quill Core boundary, exported init assets, and local dev/runtime caveats
+- Tags: current-state, quill-core, packaging, cli-init
+- Docs:
+  - Current: `packages/core/README.md`
+  - Related current behavior: `docs/current/`
+  - Target contrast: `docs/target/quill-core-architecture.md`
+- Rules:
+  - `AGENTS.md`
+- Read When:
+  - validating what the current root package actually ships for Quill Core
+  - checking how CLI init reuses packaged core assets today
+  - assessing current local-dev caveats around prebuilt `packages/core/dist`
+- Boundaries:
+  - treat `packages/core/README.md` as current packaging/runtime guidance, not a repository-wide code index
+  - keep current package behavior distinct from future Quill Core architecture goals
+- Validation:
+  - confirm routing stays focused on package/runtime behavior and does not blur current-state facts with target design
+
 ## Hermes-First Adapter Direction
 
 - Areas: first-adapter target design, adapter responsibility boundaries, and Hermes-first sequencing relative to later adapters

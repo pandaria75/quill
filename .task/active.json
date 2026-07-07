@@ -1,10 +1,10 @@
 {
-  "taskId": "2026-07-06/issue-26-quill-core-adapters-architecture",
-  "type": "documentation",
+  "taskId": "2026-07-06/issues-27-28-quill-core-package",
+  "type": "feature",
   "phase": "finalization",
   "allowedToCode": true,
   "currentSlice": null,
   "lastGate": "final-approved",
   "nextCommand": "task-complete",
-  "updatedAt": "2026-07-06T00:00:00Z"
+  "updatedAt": "2026-07-07T00:00:00Z"
 }
