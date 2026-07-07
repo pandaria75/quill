@@ -1,0 +1,14 @@
+{
+  "status": "pending-review",
+  "workflow": "technical-blog",
+  "step": "sources",
+  "artifact": "sources.md",
+  "requiredUserAction": [
+    "continue",
+    "revise",
+    "abort"
+  ],
+  "memoryEnabled": false,
+  "modelStrategy": "single-hermes-session",
+  "quillCoreLoad": "programmatic-import"
+}

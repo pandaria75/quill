@@ -1,0 +1,393 @@
+{
+  "taskId": "2026-07-07/issues-29-30-hermes-adapter",
+  "type": "feature",
+  "tier": "L",
+  "phase": "finalization",
+  "allowedToCode": true,
+  "currentSlice": "S4e",
+  "gates": {
+    "analysisComplete": true,
+    "criticPassed": true,
+    "codingApproved": true,
+    "s4PlanningComplete": true,
+    "s4ImplementationPlanReviewRequired": false,
+    "s4ImplementationUserConfirmationRequired": true,
+    "finalApproved": true
+  },
+  "gatePolicy": {
+    "recommended": "strict",
+    "selected": "strict",
+    "reason": "Hermes adapter work is cross-boundary and implementation-sensitive; issue #30 depends on verified Hermes plugin, memory, model, artifact, and human-gate behavior.",
+    "finalApprovalRequired": true
+  },
+  "sources": {
+    "issues": [29, 30],
+    "hermesDocs": "https://hermes-agent.nousresearch.com/"
+  },
+  "currentApprovedWork": {
+    "slice": "S4e",
+    "name": "Smoke Example, MVP Documentation, And Final Validation Handoff",
+    "gateClass": "standard",
+    "risk_score": 3,
+    "gateReasons": [
+      "smoke-validation",
+      "user-facing-docs",
+      "final-handoff"
+    ]
+  },
+  "plannedImplementationSubSlices": [
+    {
+      "slice": "S4a",
+      "name": "Adapter Scaffold And Hermes Plugin Layout",
+      "gateClass": "boundary-sensitive",
+      "risk_score": 4,
+      "gateReasons": [
+        "external-runtime-integration",
+        "new-adapter-location",
+        "plugin-registration"
+      ]
+    },
+    {
+      "slice": "S4b",
+      "name": "Technical-blog Workflow Runner For All MVP Steps",
+      "gateClass": "high-risk",
+      "risk_score": 5,
+      "gateReasons": [
+        "workflow-execution",
+        "core-asset-bridge",
+        "external-runtime-integration",
+        "single-session-model-policy"
+      ]
+    },
+    {
+      "slice": "S4c",
+      "name": "Artifact And Adapter-local State Handling",
+      "gateClass": "high-risk",
+      "risk_score": 5,
+      "gateReasons": [
+        "artifact-integrity",
+        "adapter-state",
+        "memory-policy",
+        "workspace-safety"
+      ]
+    },
+    {
+      "slice": "S4d",
+      "name": "Review Gate Commands And Human Resume Protocol",
+      "gateClass": "high-risk",
+      "risk_score": 5,
+      "gateReasons": [
+        "human-gate-behavior",
+        "adapter-state",
+        "explicit-user-action",
+        "workflow-safety"
+      ]
+    },
+    {
+      "slice": "S4e",
+      "name": "Smoke Example, MVP Documentation, And Final Validation Handoff",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": [
+        "smoke-validation",
+        "user-facing-docs",
+        "final-handoff"
+      ]
+    }
+  ],
+  "critic": {
+    "planReview": {
+      "verdict": "PASS_WITH_WARNINGS",
+      "notes": [
+        "S1 scope is tight and ready for user-confirmed docs-editing.",
+        "Preserve strict gate posture; S1 remains boundary-sensitive with risk_score 4.",
+        "Coder should read docs/target/hermes-adapter-design.md before editing and avoid guessed Hermes API signatures."
+      ]
+    },
+    "preDone": {
+      "verdict": "PASS",
+      "slice": "S1",
+      "notes": [
+        "Reviewer verdict PASS and docs-only validation evidence are sufficient for S1.",
+        "npm run check NOT_RUN is accepted because only Markdown documentation changed.",
+        "Continuation to S2 must pause because gateClass is boundary-sensitive, risk_score is 4, and selected gate policy is strict."
+      ]
+    },
+    "preDoneS2": {
+      "verdict": "PASS",
+      "slice": "S2",
+      "notes": [
+        "Reviewer verdict PASS after repair; planning-only validation evidence is sufficient for S2.",
+        "npm run check NOT_RUN is accepted because S2 changed only task artifacts.",
+        "Continuation to S3 must pause because selected gate policy is strict and S3 is high-risk with risk_score 5."
+      ]
+    },
+    "s3PlanReview": {
+      "verdict": "PASS_WITH_WARNINGS",
+      "slice": "S3",
+      "notes": [
+        "S3 plan is bounded enough to proceed after explicit user confirmation.",
+        "Preflight must decide implementation language/toolchain and whether Quill Core assets are imported or used as human-readable reference.",
+        "Dependency additions, package-lock changes, protected environment changes, guessed Hermes API signatures, memory integration, and per-step model routing remain stop conditions."
+      ]
+    },
+    "preDoneS3": {
+      "verdict": "PASS",
+      "slice": "S3",
+      "notes": [
+        "All five S3 smoke evidence points passed: plugin load, command path, Quill-aligned step, Markdown artifact write, and explicit review pause.",
+        "npm run check NOT_RUN is accepted because no packages/ or src/ files changed.",
+        "Continuation to S4 must pause because selected gate policy is strict and S3 is high-risk with risk_score 5."
+      ]
+    },
+    "s4PlanReview": {
+      "verdict": "PASS_WITH_WARNINGS",
+      "slice": "S4",
+      "notes": [
+        "S4a-S4e plan is sufficient for implementation after explicit user confirmation.",
+        "Dependency and lockfile changes remain forbidden unless separately approved, including in S4b-S4d.",
+        "Future coders must stay within public @pandaria/quill/core exports and stop if private internals or Core export changes appear necessary.",
+        "Strict gate policy requires explicit user confirmation between every S4 sub-slice."
+      ]
+    },
+    "preDoneS4a": {
+      "verdict": "PASS",
+      "slice": "S4a",
+      "notes": [
+        "Reviewer final verdict PASS after repair; scaffold-only validation evidence is sufficient for S4a.",
+        "python3 py_compile PASS; Hermes plugin load/help PASS; npm run check NOT_RUN because no packages/ or src/ files changed.",
+        "Continuation to S4b must pause because selected gate policy is strict and S4b is high-risk with risk_score 5."
+      ]
+    },
+    "preDoneS4b": {
+      "verdict": "PASS",
+      "slice": "S4b",
+      "notes": [
+        "Reviewer final verdict PASS_WITH_WARNINGS with no required fixes is accepted for S4b.",
+        "python3 py_compile PASS; Hermes first runner path PASS with isolated HERMES_HOME; Core public export bridge PASS; npm run check NOT_RUN because no packages/ or src/ files changed.",
+        "S4c must pause for explicit confirmation because selected gate policy is strict and S4c is high-risk with risk_score 5.",
+        "Carry forward mandatory S4c/S4d follow-ups: workspace containment, clean Core workflow-shape blocked states, humanReview enforcement, and command metadata cleanup."
+      ]
+    },
+    "preDoneS4c": {
+      "verdict": "PASS",
+      "slice": "S4c",
+      "notes": [
+        "Reviewer final verdict PASS_WITH_WARNINGS with no required fixes is accepted for S4c.",
+        "python3 py_compile PASS; Hermes CLI start/resume PASS in isolated workspace; pending-review BLOCKED state PASS; state manual check PASS; npm run check NOT_RUN because no packages/ or src/ files changed.",
+        "S4d must pause for explicit confirmation because selected gate policy is strict and S4d is high-risk with risk_score 5.",
+        "Carry forward mandatory S4d/S4e follow-ups: re-validate loaded pending-review artifact_path against workspace, handle/document current_step null after completion, contain ProgressState.to_dict mkdir side effect if needed, and update stale S4a command description metadata no later than S4e."
+      ]
+    },
+    "preDoneS4d": {
+      "verdict": "PASS_WITH_WARNINGS",
+      "slice": "S4d",
+      "notes": [
+        "Reviewer final verdict PASS_WITH_WARNINGS with no required fixes is accepted for S4d.",
+        "python3 py_compile PASS; Hermes CLI resume block PASS; continue single-segment advance PASS; revise preserve PASS; abort preserve artifacts PASS; continue without pending state BLOCKED PASS; npm run check NOT_RUN because no packages/ or src/ files changed.",
+        "S4e must pause for explicit confirmation because selected gate policy is strict and final approval remains required.",
+        "Carry forward S4e follow-ups: document topic/notes not propagated through continue, update stale command description metadata, and note low-risk cleanup items for revise/abort repo-root lookup, ProgressState.to_dict side effect, and PendingReviewState.from_dict robustness."
+      ]
+    },
+    "preDoneS4e": {
+      "verdict": "PASS_WITH_WARNINGS",
+      "slice": "S4e",
+      "notes": [
+        "Reviewer final verdict PASS_WITH_WARNINGS with no required fixes is accepted for S4e.",
+        "python3 py_compile PASS; Hermes help/load, start, resume/block, continue, revise, and abort smokes PASS; README/manual behavior check PASS; npm run check NOT_RUN because no packages/ or src/ files changed.",
+        "S4d carry-forward items are closed in S4e docs/metadata: topic/notes limitation documented and stale command description metadata updated.",
+        "Final approval remains required because finalApprovalRequired is true and finalApproved is false."
+      ]
+    }
+  },
+  "completedSlices": [
+    {
+      "slice": "S1",
+      "name": "Expand Hermes adapter target design",
+      "changedFiles": [
+        "docs/target/hermes-adapter-design.md"
+      ],
+      "reviewerVerdict": "PASS",
+      "preDoneCriticVerdict": "PASS",
+      "validation": [
+        "Manual acceptance review against issue #29 criteria: PASS",
+        "npm run check: NOT_RUN because S1 changed Markdown documentation only"
+      ]
+    },
+    {
+      "slice": "S2",
+      "name": "Plan #30 runtime verification spike",
+      "changedFiles": [
+        ".task/2026-07-07/issues-29-30-hermes-adapter/implementation-plan.md",
+        ".task/2026-07-07/issues-29-30-hermes-adapter/context-pack.md"
+      ],
+      "reviewerVerdict": "PASS",
+      "preDoneCriticVerdict": "PASS",
+      "validation": [
+        "Manual plan review: PASS",
+        "npm run check: NOT_RUN because S2 changed planning/task artifacts only"
+      ]
+    },
+    {
+      "slice": "S3",
+      "name": "Implement #30 Runtime Verification Spike",
+      "changedFiles": [
+        ".task/2026-07-07/issues-29-30-hermes-adapter/context-pack.md",
+        "spikes/hermes-runtime-verification/.gitignore",
+        "spikes/hermes-runtime-verification/.hermes/plugins/quill-runtime-spike/plugin.yaml",
+        "spikes/hermes-runtime-verification/.hermes/plugins/quill-runtime-spike/__init__.py",
+        "spikes/hermes-runtime-verification/.hermes/plugins/quill-runtime-spike/cli.py",
+        "spikes/hermes-runtime-verification/runtime-home/config.yaml",
+        "spikes/hermes-runtime-verification/workspace/run-001/brief.md",
+        "spikes/hermes-runtime-verification/workspace/run-001/sources.md",
+        "spikes/hermes-runtime-verification/workspace/run-001/.quill-runtime-spike/pending-review.json"
+      ],
+      "reviewerVerdict": "PASS_WITH_WARNINGS",
+      "preDoneCriticVerdict": "PASS",
+      "validation": [
+        "Hermes runtime smoke: PASS for plugin registration/load, command path, Quill-aligned step, Markdown artifact write, and explicit review pause",
+        "npm run check: NOT_RUN because S3 changed only spike/task artifacts outside packages/ and src/"
+      ]
+    },
+    {
+      "slice": "S4a",
+      "name": "Adapter Scaffold And Hermes Plugin Layout",
+      "changedFiles": [
+        "adapters/hermes/.gitignore",
+        "adapters/hermes/plugin.yaml",
+        "adapters/hermes/README.md",
+        "adapters/hermes/__init__.py",
+        "adapters/hermes/quill_hermes/__init__.py",
+        "adapters/hermes/quill_hermes/cli.py",
+        "adapters/hermes/.hermes/plugins/quill-hermes/plugin.yaml",
+        "adapters/hermes/.hermes/plugins/quill-hermes/__init__.py",
+        ".task/2026-07-07/issues-29-30-hermes-adapter/context-pack.md"
+      ],
+      "reviewerVerdict": "PASS",
+      "preDoneCriticVerdict": "PASS",
+      "validation": [
+        "python3 py_compile: PASS",
+        "Hermes plugin load/help smoke: PASS",
+        "npm run check: NOT_RUN because S4a changed only adapters/hermes scaffold files and task artifacts"
+      ]
+    },
+    {
+      "slice": "S4b",
+      "name": "Technical-blog Workflow Runner For All MVP Steps",
+      "changedFiles": [
+        "adapters/hermes/quill_hermes/core_assets.py",
+        "adapters/hermes/quill_hermes/workflow.py",
+        "adapters/hermes/quill_hermes/cli.py",
+        ".task/2026-07-07/issues-29-30-hermes-adapter/context-pack.md"
+      ],
+      "reviewerVerdict": "PASS_WITH_WARNINGS",
+      "preDoneCriticVerdict": "PASS",
+      "validation": [
+        "python3 py_compile: PASS after review repairs",
+        "Hermes first runner path smoke: PASS, wrote brief.md in isolated /tmp/opencode workspace",
+        "Core public export bridge: PASS, loaded intended six public exports",
+        "npm run check: NOT_RUN because S4b changed only adapter Python files and task artifacts"
+      ],
+      "followUps": [
+        "S4c must enforce workspace path containment before or around artifact writes.",
+        "S4c or the next workflow.py touch should wrap Core workflow step field-access drift into WorkflowBlockedError.",
+        "S4d must enforce Quill Core humanReview flags with adapter-local gate state before auto-advancement through review checkpoints.",
+        "Update stale S4a command description metadata no later than S4e."
+      ]
+    },
+    {
+      "slice": "S4c",
+      "name": "Artifact And Adapter-local State Handling",
+      "changedFiles": [
+        "adapters/hermes/quill_hermes/artifacts.py",
+        "adapters/hermes/quill_hermes/gates.py",
+        "adapters/hermes/quill_hermes/workflow.py",
+        ".task/2026-07-07/issues-29-30-hermes-adapter/context-pack.md"
+      ],
+      "reviewerVerdict": "PASS_WITH_WARNINGS",
+      "preDoneCriticVerdict": "PASS",
+      "validation": [
+        "python3 py_compile: PASS including artifacts.py and gates.py",
+        "Hermes CLI start path: PASS, wrote brief.md under isolated /tmp/opencode/hermes-workspace-s4c",
+        "Hermes CLI resume path: PASS, wrote sources.md plus .quill-hermes/progress.json and pending-review.json under isolated workspace",
+        "Pending-review block: PASS, second resume returned expected BLOCKED message without implementing S4d commands",
+        "State manual check: PASS, JSON state is adapter-local, memory disabled, provider_data_persisted=false, model_strategy single-hermes-session",
+        "npm run check: NOT_RUN because S4c changed only adapter Python files and task artifacts"
+      ],
+      "followUps": [
+        "S4d must re-validate pending-review artifact_path against the current workspace before acting on loaded state.",
+        "S4d should handle or document current_step null after workflow completion.",
+        "If future tests need pure serialization, consider splitting ProgressState.to_dict from path creation side effects.",
+        "Update stale S4a command description metadata no later than S4e."
+      ]
+    },
+    {
+      "slice": "S4d",
+      "name": "Review Gate Commands And Human Resume Protocol",
+      "changedFiles": [
+        "adapters/hermes/quill_hermes/cli.py",
+        "adapters/hermes/quill_hermes/workflow.py",
+        "adapters/hermes/quill_hermes/gates.py",
+        "adapters/hermes/quill_hermes/artifacts.py",
+        ".task/2026-07-07/issues-29-30-hermes-adapter/context-pack.md"
+      ],
+      "reviewerVerdict": "PASS_WITH_WARNINGS",
+      "preDoneCriticVerdict": "PASS_WITH_WARNINGS",
+      "validation": [
+        "python3 py_compile: PASS including S4d updates",
+        "Hermes CLI pending-review plain resume block: PASS",
+        "Hermes CLI continue: PASS, advanced one segment and stopped at next review checkpoint",
+        "Hermes CLI revise: PASS, preserved blocked state/instructions",
+        "Hermes CLI abort: PASS, marked adapter-local state aborted without deleting artifacts",
+        "Hermes CLI continue without pending state: PASS expected BLOCKED",
+        "npm run check: NOT_RUN because S4d changed only adapter Python files and task artifacts"
+      ],
+      "followUps": [
+        "S4e README/smoke docs must document that topic and notes are not currently propagated through continue.",
+        "Update stale S4a command description metadata no later than S4e.",
+        "Consider deferring repo-root lookup/Core asset loading to continue only so revise/abort remain state-only outside repository structure.",
+        "Consider splitting ProgressState.to_dict path creation side effects if future tests need pure serialization.",
+        "Consider stricter PendingReviewState.from_dict handling for manually corrupted None fields."
+      ]
+    },
+    {
+      "slice": "S4e",
+      "name": "Smoke Example, MVP Documentation, And Final Validation Handoff",
+      "changedFiles": [
+        "adapters/hermes/README.md",
+        "adapters/hermes/examples/technical-blog/README.md",
+        "adapters/hermes/examples/technical-blog/workspace/.gitkeep",
+        "adapters/hermes/quill_hermes/__init__.py",
+        "docs/project/knowledge-map.md",
+        "docs/target/hermes-adapter-design.md",
+        ".task/2026-07-07/issues-29-30-hermes-adapter/context-pack.md",
+        ".task/active.json"
+      ],
+      "reviewerVerdict": "PASS_WITH_WARNINGS",
+      "preDoneCriticVerdict": "PASS_WITH_WARNINGS",
+      "validation": [
+        "python3 py_compile: PASS for adapter Python files",
+        "Hermes help/load smoke: PASS with isolated HERMES_HOME and HERMES_ENABLE_PROJECT_PLUGINS=1",
+        "Hermes start smoke: PASS",
+        "Hermes resume and pending-review BLOCKED smoke: PASS",
+        "Hermes continue smoke: PASS",
+        "Hermes revise smoke: PASS",
+        "Hermes abort smoke: PASS",
+        "Manual README/behavior/limitation match check: PASS",
+        "npm run check: NOT_RUN because S4e changed only adapter docs/examples/metadata/task/docs artifacts and did not touch packages/ or src/"
+      ],
+      "followUps": [
+        "Coder reporting discipline: future handoffs should include all changed files, including task pointers and design evidence updates.",
+        "Deferred cleanup: consider state-only revise/abort repo-root lookup, ProgressState.to_dict path-creation side-effect split, and stricter PendingReviewState.from_dict validation."
+      ]
+    }
+  ],
+  "artifactPaths": {
+    "state": ".task/2026-07-07/issues-29-30-hermes-adapter/state.json",
+    "requirement": ".task/2026-07-07/issues-29-30-hermes-adapter/requirement.md",
+    "implementationPlan": ".task/2026-07-07/issues-29-30-hermes-adapter/implementation-plan.md",
+    "contextPack": ".task/2026-07-07/issues-29-30-hermes-adapter/context-pack.md",
+    "designDoc": "docs/target/hermes-adapter-design.md"
+  },
+  "updatedAt": "2026-07-07T09:51:15Z"
+}

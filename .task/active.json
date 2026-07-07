@@ -1,10 +1,10 @@
 {
-  "taskId": "2026-07-06/issues-27-28-quill-core-package",
+  "taskId": "2026-07-07/issues-29-30-hermes-adapter",
   "type": "feature",
   "phase": "finalization",
   "allowedToCode": true,
   "currentSlice": null,
   "lastGate": "final-approved",
   "nextCommand": "task-complete",
-  "updatedAt": "2026-07-07T00:00:00Z"
+  "updatedAt": "2026-07-07T09:51:15Z"
 }

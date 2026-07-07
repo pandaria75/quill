@@ -146,6 +146,24 @@ If the current state is unclear, document the uncertainty as an unknown instead 
 - Validation:
   - confirm the map makes Hermes adapter design discoverable while preserving the current-vs-target distinction
 
+## Hermes Adapter Current MVP Docs
+
+- Areas: current Hermes adapter smoke usage, bounded MVP behavior, and adapter-local limitations
+- Tags: current-state, adapter, hermes, smoke, mvp
+- Docs:
+  - Current: `adapters/hermes/README.md`
+  - Related target context: `docs/target/hermes-adapter-design.md`
+- Rules:
+  - `AGENTS.md`
+- Read When:
+  - validating the current Hermes adapter smoke path or reviewer handoff steps
+  - checking current adapter-local limitations without assuming target design is fully implemented
+- Boundaries:
+  - treat `adapters/hermes/README.md` as current MVP usage guidance, not as a repository index
+  - keep current implemented behavior distinct from Hermes target-direction docs
+- Validation:
+  - confirm documented commands, artifacts, and limitations match the current adapter behavior
+
 ## Knowledge Maturity Routing
 
 Use `knowledge.maturity` to scale routing depth and governance expectations:

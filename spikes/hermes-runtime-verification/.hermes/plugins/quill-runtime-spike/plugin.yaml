@@ -1,0 +1,4 @@
+name: quill-runtime-spike
+version: "0.1.0"
+description: "Spike-only Hermes project plugin that verifies one Quill-aligned sources step, one Markdown artifact write, and an explicit review pause without memory or model-routing changes."
+author: "Marionettist S3 spike"
