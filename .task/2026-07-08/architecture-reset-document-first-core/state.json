@@ -1,6 +1,6 @@
 {
   "taskId": "2026-07-08/architecture-reset-document-first-core",
-  "phase": "final-approval-gate",
+  "phase": "finalization",
   "allowedToCode": false,
   "tier": "L",
   "gatePolicy": {
@@ -20,7 +20,8 @@
     "s1bPreDoneCriticVerdict": "PASS",
     "s2PlanReviewCriticVerdict": "PASS_WITH_WARNINGS",
     "s2ReviewerVerdict": "PASS",
-    "s2PreDoneCriticVerdict": "PASS_WITH_WARNINGS"
+    "s2PreDoneCriticVerdict": "PASS_WITH_WARNINGS",
+    "finalApproval": "GRANTED"
   },
   "github": {
     "frozenOldDirectionLabel": "created-or-present",
@@ -28,16 +29,7 @@
     "architectureResetIssue": 33,
     "followUpIssues": [34, 35, 36, 37, 38, 39]
   },
-  "currentSlice": {
-    "id": "S2-github-issue-freeze-and-pr",
-    "gateClass": "boundary-sensitive",
-    "risk_score": 4,
-    "gateReasons": [
-      "external-github-mutation",
-      "issue-closure"
-    ],
-    "criticRequired": true
-  },
+  "currentSlice": null,
   "slices": [
     {
       "id": "S1-document-first-core-and-installer-reset",
