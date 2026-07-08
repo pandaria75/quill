@@ -1,0 +1,64 @@
+{
+  "taskId": "2026-07-08/core-gap-review-completion",
+  "type": "review",
+  "phase": "finalization",
+  "status": "completed",
+  "allowedToCode": false,
+  "tier": "M",
+  "currentSlice": null,
+  "gatePolicy": {
+    "recommended": "balanced",
+    "selected": "balanced",
+    "reason": "Core review and document-asset completion is non-trivial and cross-file, but Hermes research and runtime deletion are out of scope; balanced preserves analysis and final gates while avoiding unnecessary pauses for low-risk approved Core document slices.",
+    "finalApprovalRequired": true
+  },
+  "gates": {
+    "requirementFrozen": true,
+    "planApproved": true,
+    "contextPackReady": true,
+    "criticPassed": false,
+    "implementationDone": true,
+    "reviewPassed": true,
+    "validationPassed": true
+  },
+  "files": {
+    "requirement": ".task/2026-07-08/core-gap-review-completion/requirement.md",
+    "implementationPlan": ".task/2026-07-08/core-gap-review-completion/implementation-plan.md",
+    "contextPack": ".task/2026-07-08/core-gap-review-completion/context-pack.md"
+  },
+  "slices": [
+    {
+      "id": "S1-artifact-contracts",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 2,
+      "gateReasons": ["core-doc-expansion", "methodology-consistency"],
+      "criticRequired": false
+    },
+    {
+      "id": "S2-review-gates",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 2,
+      "gateReasons": ["advisory-gates", "user-confirmation"],
+      "criticRequired": false
+    },
+    {
+      "id": "S3-memory-policy-consolidation",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": ["directory-cleanup", "memory-boundary"],
+      "criticRequired": false
+    },
+    {
+      "id": "S4-core-orientation-and-workflow-map",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": ["core-navigation", "workflow-asset-map"],
+      "criticRequired": false
+    }
+  ],
+  "updatedAt": "2026-07-08T00:00:00Z"
+}
