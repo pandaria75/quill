@@ -13,12 +13,13 @@ When `marionettist.config.yaml` exists, read `knowledge.mode` and `knowledge.mat
 ## Project Overview
 
 - Knowledge Docs:
-  - `docs/zh-CN/` for public Chinese product-facing documentation
-  - `docs/en/` for public English product-facing documentation
+  - `docs/zh-CN/` for preserved Chinese public docs pending document-first rewrite
+  - `docs/en/` for preserved English public docs pending document-first rewrite
   - `docs/project/` for repository-wide workflow and routing
   - `docs/project/tier-policy-workflow-design.md` for installed future-facing Tier-policy workflow research boundaries and roadmap context
   - `docs/current/` for current-state knowledge about how the project works today
-  - `docs/target/` for desired future design, migration direction, or proposed architecture, including Quill Core and adapter-direction docs such as `docs/target/quill-core-architecture.md` and `docs/target/hermes-adapter-design.md`
+  - `docs/target/` for future design direction beyond the reset
+  - `docs/archive/` for historical context and postmortems such as `docs/archive/cli-mvp-postmortem.md`
 - Rule Files:
   - `AGENTS.md`
   - `.aiassistant/rules/*.md`
@@ -67,25 +68,28 @@ If the current state is unclear, document the uncertainty as an unknown instead 
   - confirm project-neutral language
   - confirm proposed workflow configurability remains design-only unless explicitly implemented in an approved slice
 
-## Public Product Documentation
+## Document-First Product Surface
 
-- Areas: user-facing explanation of the Quill MVP design and how to use it
-- Tags: public-docs, product, user-guide, software-design, bilingual
+- Areas: current Quill positioning, installer behavior, Core asset layout, and public reset messaging
+- Tags: current-state, product, installer, core-assets, reset
 - Docs:
-  - Chinese: `docs/zh-CN/software-design.md`, `docs/zh-CN/user-guide.md`
-  - English: `docs/en/software-design.md`, `docs/en/user-guide.md`
+  - Current: `README.md`
+  - Current: `docs/current/system-map.md`
+  - Archive: `docs/archive/cli-mvp-postmortem.md`
+  - Target contrast: `docs/target/quill-core-architecture.md`
 - Rules:
   - `AGENTS.md`
 - Read When:
-  - a reader wants a public overview of Quill MVP capabilities, workflow, boundaries, setup, validation expectations, or troubleshooting
-  - a task adds, renames, or updates public-facing Quill documentation
+  - validating the current product surface
+  - updating the installer-only package posture
+  - checking how the reset changed repository meaning
 - Boundaries:
-  - keep these docs product- and workflow-oriented, not as source-code indexes
-  - describe current MVP behavior and explicit non-goals clearly
-  - do not claim live provider generation is verified unless credentials and provider reachability were intentionally validated
+  - treat `README.md` and `docs/current/system-map.md` as the source for current product positioning
+  - treat archive docs as historical explanation, not active requirements
+  - do not infer runtime or plugin capability from the current reset
 - Validation:
-  - confirm Chinese and English docs stay semantically aligned
-  - confirm the docs remain detailed enough for user understanding without turning into file/class/function inventories
+  - confirm the product surface describes installer-only behavior
+  - confirm current-state docs do not present Quill as a runtime CLI
 
 ## Quill Core Target Architecture
 
@@ -93,7 +97,7 @@ If the current state is unclear, document the uncertainty as an unknown instead 
 - Tags: target-architecture, quill-core, architecture-pivot, non-goals
 - Docs:
   - Current context: `docs/current/`
-  - Public current-facing summaries: `docs/zh-CN/software-design.md`, `docs/en/software-design.md`
+  - Preserved pending rewrite: `docs/zh-CN/software-design.md`, `docs/en/software-design.md`
   - Target: `docs/target/quill-core-architecture.md`
 - Rules:
   - `AGENTS.md`
@@ -102,30 +106,31 @@ If the current state is unclear, document the uncertainty as an unknown instead 
   - a reader needs the Quill Core positioning or architecture non-goals
 - Boundaries:
   - treat `docs/target/quill-core-architecture.md` as future-direction design, not proof of current implementation
-  - use `docs/current/` and public current-facing docs when the task is about what exists today
+  - use `docs/current/` and `README.md` for current product facts; treat preserved public docs as pending rewrite until updated
   - keep routing architecture-oriented rather than turning this map into a repository index
 - Validation:
   - confirm routing makes the current MVP/reference harness distinct from the target Quill Core design
 
-## Quill Core Current Packaging Surface
+## Quill Core Document Assets
 
-- Areas: current packaged Quill Core boundary, exported init assets, and local dev/runtime caveats
-- Tags: current-state, quill-core, packaging, cli-init
+- Areas: current portable Core assets, role-cards, artifact contracts, review gates, and memory guidance
+- Tags: current-state, quill-core, documents, workflow-kit
 - Docs:
-  - Current: `packages/core/README.md`
-  - Related current behavior: `docs/current/`
+  - Current assets: `core/AGENTS.md`, `core/workflows/longform-writing.md`, `core/role-cards/technical-blog.md`
+  - Related current context: `README.md`, `docs/current/system-map.md`
   - Target contrast: `docs/target/quill-core-architecture.md`
 - Rules:
   - `AGENTS.md`
 - Read When:
-  - validating what the current root package actually ships for Quill Core
-  - checking how CLI init reuses packaged core assets today
-  - assessing current local-dev caveats around prebuilt `packages/core/dist`
+  - checking what Quill Core currently ships
+  - updating portable workflow-kit documents
+  - validating role-card vs workflow boundaries
 - Boundaries:
-  - treat `packages/core/README.md` as current packaging/runtime guidance, not a repository-wide code index
-  - keep current package behavior distinct from future Quill Core architecture goals
+  - keep Core document-first and runtime-free
+  - treat `technical-blog` as a role-card, not a workflow command
+  - do not turn this routing entry into a file-by-file inventory beyond the key asset categories
 - Validation:
-  - confirm routing stays focused on package/runtime behavior and does not blur current-state facts with target design
+  - confirm Core assets remain portable and document-first
 
 ## Hermes-First Adapter Direction
 
@@ -146,23 +151,26 @@ If the current state is unclear, document the uncertainty as an unknown instead 
 - Validation:
   - confirm the map makes Hermes adapter design discoverable while preserving the current-vs-target distinction
 
-## Hermes Adapter Current MVP Docs
+## Hermes Distribution Research Surface
 
-- Areas: current Hermes adapter smoke usage, bounded MVP behavior, and adapter-local limitations
-- Tags: current-state, adapter, hermes, smoke, mvp
+- Areas: current Hermes distribution research assets and pre-implementation documentation skeleton
+- Tags: current-state, hermes, distribution, research
 - Docs:
-  - Current: `adapters/hermes/README.md`
-  - Related target context: `docs/target/hermes-adapter-design.md`
+  - Current: `distributions/hermes/README.md`
+  - Current: `distributions/hermes/research/`
+  - Current: `distributions/hermes/plugin/README.md`, `distributions/hermes/commands/README.md`, `distributions/hermes/subagents/README.md`, `distributions/hermes/config/README.md`, `distributions/hermes/memory/README.md`
+  - Target context: `docs/target/hermes-adapter-design.md`
 - Rules:
   - `AGENTS.md`
 - Read When:
-  - validating the current Hermes adapter smoke path or reviewer handoff steps
-  - checking current adapter-local limitations without assuming target design is fully implemented
+  - verifying what is currently known versus unknown for Hermes work
+  - preparing a future Hermes spike
 - Boundaries:
-  - treat `adapters/hermes/README.md` as current MVP usage guidance, not as a repository index
-  - keep current implemented behavior distinct from Hermes target-direction docs
+  - treat the distribution directory as documentation-only in the current reset
+  - keep unknown runtime details explicitly labeled `unknown`
+  - do not claim plugin implementation exists
 - Validation:
-  - confirm documented commands, artifacts, and limitations match the current adapter behavior
+  - confirm current docs stay research-first and implementation-free
 
 ## Knowledge Maturity Routing
 

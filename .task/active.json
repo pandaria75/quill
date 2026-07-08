@@ -1,10 +1,10 @@
 {
-  "taskId": "2026-07-07/issues-31-32-public-docs-pivot",
-  "type": "documentation",
+  "taskId": "2026-07-08/architecture-reset-document-first-core",
+  "type": "refactor",
   "phase": "finalization",
   "allowedToCode": false,
   "currentSlice": null,
-  "lastGate": "slice-review-passed",
-  "nextCommand": "final-approval",
-  "updatedAt": "2026-07-07T10:24:00Z"
+  "lastGate": "final-approval-granted",
+  "nextCommand": "task-closed",
+  "updatedAt": "2026-07-08T00:00:00Z"
 }
