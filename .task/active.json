@@ -1,10 +1,10 @@
 {
   "taskId": "2026-07-08/architecture-reset-document-first-core",
   "type": "refactor",
-  "phase": "slice-execution",
-  "allowedToCode": true,
+  "phase": "final-approval-gate",
+  "allowedToCode": false,
   "currentSlice": "S2-github-issue-freeze-and-pr",
-  "lastGate": "user-confirmed-s2",
-  "nextCommand": "execute-github-issue-freeze-and-pr",
+  "lastGate": "s2-pre-done-critic-passed",
+  "nextCommand": "final-approval",
   "updatedAt": "2026-07-08T00:00:00Z"
 }

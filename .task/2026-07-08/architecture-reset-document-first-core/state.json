@@ -1,7 +1,7 @@
 {
   "taskId": "2026-07-08/architecture-reset-document-first-core",
-  "phase": "slice-execution",
-  "allowedToCode": true,
+  "phase": "final-approval-gate",
+  "allowedToCode": false,
   "tier": "L",
   "gatePolicy": {
     "recommended": "strict",
@@ -18,7 +18,9 @@
     "s1bPlanReviewCriticVerdict": "PASS_WITH_WARNINGS",
     "s1bReviewerVerdict": "PASS",
     "s1bPreDoneCriticVerdict": "PASS",
-    "s2PlanReviewCriticVerdict": "PASS_WITH_WARNINGS"
+    "s2PlanReviewCriticVerdict": "PASS_WITH_WARNINGS",
+    "s2ReviewerVerdict": "PASS",
+    "s2PreDoneCriticVerdict": "PASS_WITH_WARNINGS"
   },
   "github": {
     "frozenOldDirectionLabel": "created-or-present",
@@ -64,7 +66,7 @@
     },
     {
       "id": "S2-github-issue-freeze-and-pr",
-      "status": "pending",
+      "status": "completed",
       "gateClass": "boundary-sensitive",
       "risk_score": 4,
       "gateReasons": [
