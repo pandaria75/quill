@@ -8,4 +8,10 @@ docs/develop/
 docs/examples/
 examples/
 src/
+packages/
+scripts/
+adapters/
+.task/
+.agents/
+.aiassistant/
 tsconfig.json

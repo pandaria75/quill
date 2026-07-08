@@ -1,10 +1,10 @@
 {
-  "taskId": "2026-07-07/issues-31-32-public-docs-pivot",
-  "type": "documentation",
-  "phase": "finalization",
-  "allowedToCode": false,
-  "currentSlice": null,
-  "lastGate": "slice-review-passed",
-  "nextCommand": "final-approval",
-  "updatedAt": "2026-07-07T10:24:00Z"
+  "taskId": "2026-07-08/architecture-reset-document-first-core",
+  "type": "refactor",
+  "phase": "slice-execution",
+  "allowedToCode": true,
+  "currentSlice": "S2-github-issue-freeze-and-pr",
+  "lastGate": "user-confirmed-s2",
+  "nextCommand": "execute-github-issue-freeze-and-pr",
+  "updatedAt": "2026-07-08T00:00:00Z"
 }

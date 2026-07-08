@@ -8,6 +8,7 @@ secrets/
 node_modules/
 dist/
 packages/core/dist/
+.quill/
 npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*

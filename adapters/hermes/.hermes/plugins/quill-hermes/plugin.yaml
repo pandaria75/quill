@@ -1,4 +1,0 @@
-name: quill-hermes
-version: "0.1.0"
-description: "Minimal Hermes adapter scaffold that exposes Quill adapter command help only; workflow execution remains future S4b+ work."
-author: "Marionettist S4a scaffold"

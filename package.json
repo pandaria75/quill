@@ -1,45 +1,22 @@
 {
   "name": "@pandaria/quill",
   "version": "0.1.0",
-  "description": "Local-first workflow CLI for high-quality content production.",
+  "description": "Document-first longform-writing workflow kit installer and scaffold.",
   "license": "MIT",
   "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./core": {
-      "types": "./packages/core/dist/index.d.ts",
-      "import": "./packages/core/dist/index.js"
-    }
-  },
   "bin": {
-    "quill": "dist/cli.js"
+    "quill": "tools/installer/src/cli.js"
   },
   "files": [
-    "dist",
-    "packages/core/dist",
-    "packages/core/package.json",
-    "packages/core/README.md",
+    "core",
+    "distributions",
+    "tools/installer/src/cli.js",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsc -p packages/core/tsconfig.json && tsc",
-    "dev": "tsx src/cli.ts",
-    "check": "tsc -p packages/core/tsconfig.json --noEmit && tsc --noEmit",
-    "smoke:init": "node scripts/smoke-init.mjs",
-    "smoke:article-status": "node scripts/smoke-article-status.mjs",
-    "smoke:mvp": "node scripts/smoke-mvp.mjs"
-  },
-  "dependencies": {
-    "commander": "^12.1.0"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.2",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.2"
+    "init": "node tools/installer/src/cli.js init",
+    "smoke:installer": "node tools/installer/src/cli.js init --target /tmp/opencode/quill-installer-smoke"
   },
   "engines": {
     "node": ">=20"

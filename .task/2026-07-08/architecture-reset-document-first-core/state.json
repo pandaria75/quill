@@ -1,0 +1,77 @@
+{
+  "taskId": "2026-07-08/architecture-reset-document-first-core",
+  "phase": "slice-execution",
+  "allowedToCode": true,
+  "tier": "L",
+  "gatePolicy": {
+    "recommended": "strict",
+    "selected": "strict",
+    "reason": "Architecture reset deletes old runtime, changes package entrypoint, and later mutates GitHub issues.",
+    "finalApprovalRequired": true
+  },
+  "gates": {
+    "analysisApproved": true,
+    "criticPassed": true,
+    "planReviewCriticVerdict": "PASS_WITH_WARNINGS",
+    "reviewerVerdict": "PASS",
+    "preDoneCriticVerdict": "PASS",
+    "s1bPlanReviewCriticVerdict": "PASS_WITH_WARNINGS",
+    "s1bReviewerVerdict": "PASS",
+    "s1bPreDoneCriticVerdict": "PASS",
+    "s2PlanReviewCriticVerdict": "PASS_WITH_WARNINGS"
+  },
+  "github": {
+    "frozenOldDirectionLabel": "created-or-present",
+    "frozenIssues": [20, 21, 22, 23, 24, 25],
+    "architectureResetIssue": 33,
+    "followUpIssues": [34, 35, 36, 37, 38, 39]
+  },
+  "currentSlice": {
+    "id": "S2-github-issue-freeze-and-pr",
+    "gateClass": "boundary-sensitive",
+    "risk_score": 4,
+    "gateReasons": [
+      "external-github-mutation",
+      "issue-closure"
+    ],
+    "criticRequired": true
+  },
+  "slices": [
+    {
+      "id": "S1-document-first-core-and-installer-reset",
+      "status": "completed",
+      "gateClass": "high-risk",
+      "risk_score": 5,
+      "gateReasons": [
+        "runtime-deletion",
+        "package-entrypoint-change",
+        "architecture-reset",
+        "hermes-boundary"
+      ],
+      "criticRequired": true
+    },
+    {
+      "id": "S1b-delete-old-cli-mvp-docs",
+      "status": "completed",
+      "gateClass": "high-risk",
+      "risk_score": 5,
+      "gateReasons": [
+        "destructive-doc-delete",
+        "old-direction-cleanup",
+        "docs-routing"
+      ],
+      "criticRequired": true
+    },
+    {
+      "id": "S2-github-issue-freeze-and-pr",
+      "status": "pending",
+      "gateClass": "boundary-sensitive",
+      "risk_score": 4,
+      "gateReasons": [
+        "external-github-mutation",
+        "issue-closure"
+      ],
+      "criticRequired": true
+    }
+  ]
+}
