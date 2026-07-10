@@ -1,10 +1,10 @@
 {
   "taskId": "2026-07-08/core-gap-review-completion",
   "type": "review",
-  "phase": "finalization",
+  "phase": "completed",
   "allowedToCode": false,
   "currentSlice": null,
-  "lastGate": "final-approval-required",
-  "nextCommand": "await-final-approval",
+  "lastGate": "finalized",
+  "nextCommand": null,
   "updatedAt": "2026-07-10T00:00:00Z"
 }

@@ -1,8 +1,8 @@
 {
   "taskId": "2026-07-08/core-gap-review-completion",
   "type": "review",
-  "phase": "finalization",
-  "status": "in_progress",
+  "phase": "completed",
+  "status": "completed",
   "allowedToCode": false,
   "tier": "M",
   "currentSlice": null,
