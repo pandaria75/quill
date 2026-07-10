@@ -37,6 +37,24 @@ This shape is a methodology map, not an execution specification. Stages may be r
 7. `rewrite`: repair the draft according to review findings.
 8. `final`: produce the final human-approved document.
 
+## Uncertainty Return Path
+
+When uncertainty affects the central claim, intended audience, technical conclusion, solution choice, factual accuracy, public sensitivity, or authorial stance, pause the affected work and return the question to the user for discussion. Record the uncertainty and the decision needed in the current artifact rather than guessing or letting a later pass conceal it.
+
+Minor uncertainty may continue only with a visible caveat or placeholder when it does not change those foundations. This is guidance for a human-visible handoff, not an automatic stop or escalation mechanism.
+
+## Technical-Blog Progression
+
+When the `technical-blog` role-card is active, prefer a reader-facing progression from the problem, to why it matters, to how it can be addressed. This is a useful through-line for structure, drafting, and rewriting—not a required outline shape. A different progression may better serve the evidence, audience, or article purpose.
+
+Keep role-specific voice, opinion-marking, and naturalness guidance in `role-cards/technical-blog.md`; use the relevant skills for their detailed methods.
+
+## Rewrite Coordination
+
+For a technical blog, a useful advisory order is factual review first, then narrative polish, audience/style adaptation, targeted AI-flavor reduction, and final editing. Apply only the passes that help the document; this sequence does not prescribe an execution system.
+
+Later passes should route a newly exposed factual, structural, or unresolved-uncertainty issue back to the earlier stage or skill that can address it. Narrative polish should not resolve factual questions, style adaptation should not mask a structural problem, AI-flavor reduction should not manufacture mistakes, and final editing should not flatten suitable authorial voice or tolerate severe ambiguity.
+
 ## Workflow-To-Assets Map
 
 Use this map to connect each workflow stage to the Core assets that support it. The map is intentionally document-oriented: it describes what to inspect, produce, and confirm, not how any host tool should run the work.
@@ -46,10 +64,10 @@ Use this map to connect each workflow stage to the Core assets that support it. 
 | `intent` | brief, assignment, target audience, publication context, constraints | `artifact-contracts/intent.md` | `skills/audience-and-intent.md` | memory may inform stable audience, tone, or publication preferences when explicitly relevant | audience is specific, purpose is testable, scope and non-goals are visible |
 | `context-pack` | intent, source notes, references, examples, factual risks, known constraints | `artifact-contracts/context-pack.md` | `skills/context-pack-building.md` | memory candidates may be noted only for durable, reviewed lessons; raw notes stay out of memory by default | context is concise, sources are traceable, assumptions and unknowns are explicit |
 | `angle` | intent, context pack, topic candidates, evidence constraints | `artifact-contracts/angle.md` | `skills/topic-angle-discovery.md` | memory may surface recurring positioning preferences, but current intent wins | angle is narrower than the topic, evidence-backed, and strong enough to shape structure |
-| `structure` | intent, context pack, chosen angle, section ideas, evidence gaps | `artifact-contracts/structure.md` | `skills/outline-architecture.md` | `review-gates/before-draft.md` checks planning readiness before drafting | section order supports the angle, each section has a job, major unsupported claims are marked before drafting |
-| `draft` | confirmed or explicitly caveated intent, context pack, angle, structure, role-card guidance | `artifact-contracts/draft.md` | `skills/longform-drafting.md` | before-draft gate decision should be visible when the work needs explicit planning confirmation | draft is complete end to end, claims stay close to evidence, unresolved gaps are marked rather than hidden |
-| `review` | draft, context pack, sources, role-card expectations, current caveats | `artifact-contracts/review.md` | `skills/factual-review.md`, `skills/ai-flavor-reduction.md` | review may identify memory candidates, but acceptance belongs under `memory/` policy guidance | important claims are checked, uncertainty is visible, structure/audience fit and synthetic phrasing risks are named |
-| `rewrite` | draft, review notes, structure notes, role-card or user style direction | `artifact-contracts/rewrite.md` | `skills/narrative-polish.md`, `skills/style-adaptation.md`, `skills/ai-flavor-reduction.md` | `review-gates/before-final.md` can be prepared once review findings are resolved or intentionally deferred | rewrite addresses review findings, preserves factual meaning, improves flow and style without masking unresolved issues |
+| `structure` | intent, context pack, chosen angle, section ideas, evidence gaps | `artifact-contracts/structure.md` | `skills/outline-architecture.md` | `review-gates/before-draft.md` checks planning readiness before drafting | section order supports the angle, each section has a job, major unsupported claims are marked before drafting; technical blogs may use problem -> why it matters -> how to address it |
+| `draft` | confirmed or explicitly caveated intent, context pack, angle, structure, role-card guidance | `artifact-contracts/draft.md` | `skills/longform-drafting.md` | before-draft gate decision should be visible when the work needs explicit planning confirmation | draft is complete end to end, claims stay close to evidence, unresolved gaps are marked rather than hidden; blocking uncertainty returns for user discussion |
+| `review` | draft, context pack, sources, role-card expectations, current caveats | `artifact-contracts/review.md` | `skills/factual-review.md` | review may identify memory candidates, but acceptance belongs under `memory/` policy guidance | important claims are checked, uncertainty is visible, and factual or structural issues are routed back before later rewrite passes |
+| `rewrite` | draft, review notes, structure notes, role-card or user style direction | `artifact-contracts/rewrite.md` | `skills/narrative-polish.md`, `skills/style-adaptation.md`, `skills/ai-flavor-reduction.md` | `review-gates/before-final.md` can be prepared once review findings are resolved or intentionally deferred | rewrite preserves factual meaning and authorial reasoning while improving flow, style, and targeted generic phrasing; later discoveries return to the appropriate earlier work |
 | `final` | rewritten draft, review/rewrite notes, final gate checklist, handoff expectations | `artifact-contracts/final.md` | `skills/final-editing.md` | `review-gates/before-final.md`; memory candidates may be proposed after human-visible review | final article is human-approved for the agreed handoff, placeholders are resolved or explained, remaining caveats are visible |
 
 Role-cards adapt the criteria in this table. For example, `role-cards/technical-blog.md` raises the importance of traceable claims, technical precision, and explicit assumptions, while still using `longform-writing` as the workflow.

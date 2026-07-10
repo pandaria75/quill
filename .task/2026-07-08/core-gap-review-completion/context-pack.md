@@ -2,7 +2,7 @@
 
 ## Task Goal
 
-Enrich the existing Quill Core skeleton into a complete, normative document-first longform-writing workflow kit while keeping all changes platform-neutral, provider-neutral, memory-runtime-neutral, and runtime-free.
+Deepen the technical-blog role-card and all existing Core writing skills so they provide usable judgment guidance, preserve a first-person human voice, distinguish opinions from facts, tolerate understandable natural irregularity, use progressive problem-to-why-to-solution explanation, and discuss blocking uncertainty with the user instead of guessing.
 
 ## Knowledge Posture
 
@@ -11,8 +11,11 @@ Enrich the existing Quill Core skeleton into a complete, normative document-firs
 
 ## Current Slice Or Group
 
-- Current approved slice: `S4-core-orientation-and-workflow-map`.
-- S1, S2, and S3 have passed review; S4 is the active slice under selected `balanced` continuation.
+- Completed follow-up slices: S5-S10; implementation and independent review passed.
+- No current coding slice; final validation passed and the task is waiting for final approval.
+- S10 gate metadata was `gateClass: standard`, `risk_score: 3`, with `gateReasons: workflow-integration, cross-skill-consistency, runtime-free-boundary`.
+- User explicitly approved continuation through the remaining planned slices, subject to selected `balanced` continuation rules and mandatory stops.
+- S1-S4 remain completed historical slices.
 
 ## Gate Policy
 
@@ -29,6 +32,13 @@ Enrich the existing Quill Core skeleton into a complete, normative document-firs
   - gates: advisory with user confirmation
   - memory policy path: merge into `core/memory`; keep only `core/memory`
   - document depth: complete/normative rather than short stubs
+  - technical-blog voice: first-person singular (`我`) by default, without requiring it in every sentence
+  - opinions: permitted when visibly distinguished from facts and unresolved speculation
+  - internet-native wording: permitted when appropriate for audience, pacing, or emphasis
+  - final phrasing: occasional obvious awkward sentences may remain when meaning is understandable
+  - naturalness: permitted rather than manufactured as a quota
+  - rhetoric: prefer problem -> why it matters -> how to solve progression where suitable
+  - uncertainty: discuss blocking uncertainty with the user instead of guessing
 
 ## Implementation Source
 
@@ -79,35 +89,33 @@ Enrich the existing Quill Core skeleton into a complete, normative document-firs
 - `docs/project/knowledge-map.md`
 - `docs/current/system-map.md`
 - `docs/target/quill-core-architecture.md`
-- Current `core/**` files read during audit
+- Current `core/**` files read during audit, with follow-up emphasis on the role-card, all ten skills, and workflow integration
 
 ## Execution Mode
 
 - Mode: sequential
-- Current Slice Or Group: `S4-core-orientation-and-workflow-map`
+- Current Slice Or Group: none; all planned slices completed
 - Parallel Members: none
-- Fallback Order: S1 -> S2 -> S3 -> S4
-- Shared Files: later orientation docs depend on earlier wording
+- Fallback Order: S5 -> S6 -> S7 -> S8 -> S9 -> S10
+- Shared Files: no same-slice file overlap; later skills and workflow depend on S5 terminology
 - Merge Owner: primary orchestrator
 - Conflict Resolution Rule: preserve advisory/non-runtime boundaries; later wording may harmonize earlier docs but must not change user-confirmed scope.
 - Validation Level: slice, then final
 
 ## Execution Chain
 
-1. S1 expands artifact contracts.
-2. S2 expands advisory review gates.
-3. S3 expands memory policy and removes duplicate empty memory policy path.
-4. S4 improves Core orientation and workflow-to-assets map.
+1. S5 establishes the technical-blog role and style foundation.
+2. S6 deepens planning skills and uncertainty routing.
+3. S7 deepens progressive structure and first-person drafting.
+4. S8 coordinates rewrite skills and redefines AI-flavor reduction around preserving human texture.
+5. S9 aligns factual and final review with opinion/fact boundaries and tolerated irregularity.
+6. S10 integrates concise routing guidance into the shared workflow.
 
 ## Allowed Modification Scope
 
-- `core/artifact-contracts/*.md`
-- `core/review-gates/*.md`
-- `core/memory/*.md`
-- empty `core/memory-policies/` cleanup
-- `core/AGENTS.md`
+- `core/role-cards/technical-blog.md`
+- all ten existing Markdown files under `core/skills/`
 - `core/workflows/longform-writing.md`
-- `README.md`, `docs/current/system-map.md`, or `docs/project/knowledge-map.md` only if references become stale
 - task-local artifacts under `.task/2026-07-08/core-gap-review-completion/`
 
 ## Forbidden Modification Scope
@@ -117,6 +125,8 @@ Enrich the existing Quill Core skeleton into a complete, normative document-firs
 - Package entrypoint changes.
 - Old CLI runtime deletion or cleanup.
 - GitHub issue mutation.
+- `core/AGENTS.md`, artifact contracts, review gates, memory docs, README, and project docs unless a direct contradiction is discovered and separately approved.
+- Deliberate mistake, awkward-sentence, slang, or first-person-per-paragraph quotas.
 
 ## Key Existing Entrypoints
 
@@ -127,46 +137,54 @@ Enrich the existing Quill Core skeleton into a complete, normative document-firs
 ## Required Behavior
 
 - Keep Core document-first and portable.
-- Enrich documents with complete guidance, templates/checklists where useful, and clear quality bars.
-- Use advisory language for artifact structures and gates.
-- Gates should include a visible user-confirmation decision record.
-- Memory docs should remain policy-oriented and avoid runtime/persistence ownership.
+- Give judgment-heavy skills decision guidance, examples or scenarios, boundaries, uncertainty handling, handoffs, and stopping criteria where useful.
+- Default the technical-blog role to first-person singular while allowing natural variation.
+- Keep subjective opinions visibly distinct from verified facts, evidence-backed conclusions, inference, and speculation.
+- Allow audience-appropriate internet-native wording and occasional understandable awkwardness in final copy.
+- Never use informality to excuse factual error, broken logic, severe ambiguity, or accidental placeholders.
+- Prefer problem -> why it matters -> how to solve progression without enforcing one outline template.
+- Stop and discuss uncertainty that affects the central claim, audience, technical conclusion, solution choice, factual accuracy, public sensitivity, or authorial stance.
 
 ## Non-goals
 
 - No Hermes research in this task.
 - No runtime behavior.
 - No model calls or provider routing.
-- No hard machine-enforced schemas.
+- No hard machine-enforced schemas or mandatory style quotas.
 - No publishing pipeline.
 
 ## Implementation Steps
 
-- Follow `.task/2026-07-08/core-gap-review-completion/implementation-plan.md` slice order.
-- Analysis gate has been approved. Implement only the currently approved slice recorded in state and active task artifacts.
+- Follow the S5-S10 order in `.task/2026-07-08/core-gap-review-completion/implementation-plan.md`.
+- Do not perform further Core edits unless final validation finds a blocking issue and a bounded repair is approved under the existing retry policy.
 
 ## Validation Commands
 
-- Primary: manual Markdown review against requirement and forbidden scope.
-- Optional final smoke if installer output should be checked: `npm run smoke:installer`.
-- Validation evidence should record any `NOT_RUN` reason if commands are skipped because changes are Core Markdown-only.
+- `git diff --check`
+- bounded diff review for `core/role-cards/technical-blog.md`, `core/skills/`, and `core/workflows/longform-writing.md`
+- manual preference traceability checklist and eight-stage technical-blog walkthrough
+- manual fact/opinion/inference/speculation/error examples and blocking/non-blocking uncertainty scenarios
+- optional `npm run smoke:installer` only if package-copy behavior needs verification; otherwise record `NOT_RUN` because changes are Markdown methodology only
 
 ## Assumptions
 
-- Complete/normative means richer guidance, not runtime enforceability.
-- `core/memory-policies/` is an empty duplicate path and should be removed/merged into `core/memory/`.
-- The current README and system map are broadly aligned and only need updates if Core path references change.
+- First-person singular is a default role stance, not a requirement for every sentence or paragraph.
+- Subjective voice and internet-native wording remain subordinate to technical meaning and audience comprehension.
+- Understandable awkward phrasing may survive final editing, but errors should not be intentionally manufactured.
+- Existing artifact contracts, review gates, memory guidance, README, and system map remain aligned unless implementation discovers a direct contradiction.
 
 ## Risks
 
-- Over-prescribing artifacts despite the user's guiding-format preference.
-- Making advisory gates sound mandatory or automated.
-- Introducing platform/runtime/provider assumptions while improving examples.
-- Deleting a directory requires care even if it is empty.
+- Turning style permissions into forced quotas or caricatured informality.
+- Letting first-person opinion blur into unsupported factual claims.
+- Letting tolerated awkwardness excuse severe ambiguity, broken logic, or technical error.
+- Duplicating the workflow inside the role-card or skills.
+- Applying rewrite passes in a way that removes authorial voice or reintroduces synthetic uniformity.
 
 ## Stop Conditions
 
-- Stop before any unapproved Core modifications outside the current slice.
+- Stop before any unapproved Core modification outside the current slice.
 - Stop if a proposed change would require Hermes assumptions.
 - Stop if a slice needs runtime behavior, model integration, memory persistence, or package entrypoint changes.
-- Stop before any destructive deletion beyond the explicitly scoped empty `core/memory-policies/` cleanup if the directory is not empty.
+- Stop and discuss any new ambiguity affecting authorial stance, factual treatment, public sensitivity, solution choice, or acceptance boundaries.
+- Stop if a proposed edit requires files outside the follow-up allowlist or implies errors/slang should be deliberately manufactured.

@@ -2,7 +2,7 @@
   "taskId": "2026-07-08/core-gap-review-completion",
   "type": "review",
   "phase": "finalization",
-  "status": "completed",
+  "status": "in_progress",
   "allowedToCode": false,
   "tier": "M",
   "currentSlice": null,
@@ -58,7 +58,55 @@
       "risk_score": 3,
       "gateReasons": ["core-navigation", "workflow-asset-map"],
       "criticRequired": false
+    },
+    {
+      "id": "S5-role-card-style-foundation",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 2,
+      "gateReasons": ["role-card-foundation", "user-confirmed-style", "advisory-methodology"],
+      "criticRequired": false
+    },
+    {
+      "id": "S6-planning-and-uncertainty",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": ["uncertainty-routing", "claim-basis", "user-discussion-boundary"],
+      "criticRequired": false
+    },
+    {
+      "id": "S7-structure-and-drafting",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": ["rhetorical-progression", "drafting-judgment", "uncertainty-stop"],
+      "criticRequired": false
+    },
+    {
+      "id": "S8-rewrite-coordination",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": ["rewrite-coordination", "meaning-preservation", "ai-flavor-boundary"],
+      "criticRequired": false
+    },
+    {
+      "id": "S9-factual-and-final-review",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": ["factual-integrity", "final-quality-boundary", "tolerated-irregularity"],
+      "criticRequired": false
+    },
+    {
+      "id": "S10-workflow-integration",
+      "status": "completed",
+      "gateClass": "standard",
+      "risk_score": 3,
+      "gateReasons": ["workflow-integration", "cross-skill-consistency", "runtime-free-boundary"],
+      "criticRequired": false
     }
   ],
-  "updatedAt": "2026-07-08T00:00:00Z"
+  "updatedAt": "2026-07-10T00:00:00Z"
 }
